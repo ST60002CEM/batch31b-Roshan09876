@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:job_finder/view/login_view.dart';
 
-class Dashboard extends StatelessWidget {
-  const Dashboard({Key? key}) : super(key: key);
+class SignUp extends StatelessWidget {
+  const SignUp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -89,12 +90,16 @@ class Dashboard extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 )),
             SizedBox(
-              height: 10,
+              height: 15,
             ),
-            Text(
-              'Already have an account? Login',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-            )
+            InkWell(
+              onTap: () => Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Login())),
+              child: Text(
+                'Already have an account? Login',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+              ),
+            ),
           ],
         ),
       ),
