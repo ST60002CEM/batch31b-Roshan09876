@@ -13,7 +13,7 @@ class SignUp extends StatelessWidget {
         child: Column(
           children: [
             Align(
-              alignment: Alignment.topLeft, // Corrected alignment
+              alignment: Alignment.topLeft, 
               child: CircleAvatar(
                 radius: 70,
                 backgroundColor: Color.fromARGB(255, 158, 204, 242),
