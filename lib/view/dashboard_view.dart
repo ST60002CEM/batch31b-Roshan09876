@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class Dashboard extends StatelessWidget {
-  const Dashboard({super.key});
+class DashboardView extends StatelessWidget {
+  const DashboardView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,10 @@ class Dashboard extends StatelessWidget {
           items: [
             BottomNavigationBarItem(
                 icon: Icon(Icons.line_style_outlined), label: 'Drawer'),
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'home'),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'home',
+            ),
             BottomNavigationBarItem(
                 icon: Icon(Icons.verified_user), label: 'Profile'),
           ]),
@@ -258,7 +261,7 @@ class Dashboard extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: 20,
+            height: 10,
           ),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,

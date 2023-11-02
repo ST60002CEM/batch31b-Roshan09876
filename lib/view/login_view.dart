@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:job_finder/view/signup_view.dart';
 
-class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
+class LoginView extends StatelessWidget {
+  const LoginView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +81,7 @@ class Login extends StatelessWidget {
             ),
             InkWell(
               onTap: () => Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => SignUp())),
+                  context, MaterialPageRoute(builder: (context) => SignUpView())),
               child: Text(
                 "Don't have an account? SignUp",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
