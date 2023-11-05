@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:job_finder/view/login_view.dart';
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -7,25 +8,22 @@ class ProfileView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 196, 238, 240),
-      bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.blue,
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.white,
-          iconSize: 28,
-          items: [
-            BottomNavigationBarItem(
-                icon: Icon(Icons.line_style_outlined), label: 'Drawer'),
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'home'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.verified_user), label: 'Profile'),
-          ]),
       body: SingleChildScrollView(
         child: Column(children: [
-          Align(
-            alignment: Alignment.topLeft,
-            child: CircleAvatar(
-              radius: 70,
-              backgroundColor: Color.fromARGB(255, 158, 204, 242),
+          Padding(
+            padding: EdgeInsets.fromLTRB(5, 40, 0, 0),
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: ClipOval(
+                child: Container(
+                  width: 150,
+                  height: 150,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage('assets/images/jobfinder.jpg'),
+                          )),
+                ),
+              ),
             ),
           ),
           SizedBox(
@@ -62,7 +60,8 @@ class ProfileView extends StatelessWidget {
                   children: [
                     Text(
                       'Roshan Kumar Khadka',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     ),
                     Text(
                       'khadkaroshan@gmail.com',
@@ -99,7 +98,8 @@ class ProfileView extends StatelessWidget {
                     padding: EdgeInsets.fromLTRB(0, 15, 0, 0),
                     child: Text(
                       'Upload your Resume',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                     ),
                   ),
                   SizedBox(
@@ -145,7 +145,8 @@ class ProfileView extends StatelessWidget {
                   children: [
                     Text(
                       'Company',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                     ),
                     SizedBox(
                       width: 20,
@@ -153,7 +154,8 @@ class ProfileView extends StatelessWidget {
                     Icon(Icons.arrow_right),
                     Text(
                       'Apple Inc',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                     ),
                     Padding(
                         padding: EdgeInsets.fromLTRB(140, 0, 0, 0),
@@ -167,7 +169,8 @@ class ProfileView extends StatelessWidget {
                   children: [
                     Text(
                       'Salary',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                     ),
                     SizedBox(
                       width: 45,
@@ -175,7 +178,8 @@ class ProfileView extends StatelessWidget {
                     Icon(Icons.arrow_right),
                     Text(
                       '50K per Month',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                     )
                   ],
                 ),
@@ -183,7 +187,8 @@ class ProfileView extends StatelessWidget {
                   children: [
                     Text(
                       'Address',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                     ),
                     SizedBox(
                       width: 30,
@@ -191,7 +196,8 @@ class ProfileView extends StatelessWidget {
                     Icon(Icons.arrow_right),
                     Text(
                       'Nepalgunj, Karkando',
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                     ),
                   ],
                 ),
@@ -236,8 +242,8 @@ class ProfileView extends StatelessWidget {
                       alignment: Alignment.center,
                       child: Text(
                         'Flutter',
-                        style:
-                            TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 15),
                       )),
                 ),
                 SizedBox(
@@ -253,8 +259,8 @@ class ProfileView extends StatelessWidget {
                       alignment: Alignment.center,
                       child: Text(
                         'NodeJS',
-                        style:
-                            TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 15),
                       )),
                 ),
                 SizedBox(
@@ -270,8 +276,8 @@ class ProfileView extends StatelessWidget {
                       alignment: Alignment.center,
                       child: Text(
                         'Data Analyst',
-                        style:
-                            TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 15),
                       )),
                 ),
               ],
@@ -285,7 +291,10 @@ class ProfileView extends StatelessWidget {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.red, minimumSize: Size(150, 50)),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => LoginView()));
+                },
                 child: Text(
                   'Log Out',
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),

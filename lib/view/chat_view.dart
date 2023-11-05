@@ -68,9 +68,16 @@ class ChatView extends StatelessWidget {
                     child: Row(children: [
                       Column(
                         children: [
-                          CircleAvatar(
-                            backgroundColor: Colors.white,
-                            radius: 45,
+                          ClipOval(
+                            child: Container(
+                              width: 95,
+                              height: 95,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/image1.jpg'),
+                                      fit: BoxFit.cover)),
+                            ),
                           ),
                           SizedBox(
                             height: 5,
@@ -87,9 +94,16 @@ class ChatView extends StatelessWidget {
                       ),
                       Column(
                         children: [
-                          CircleAvatar(
-                            backgroundColor: Colors.white,
-                            radius: 45,
+                          ClipOval(
+                            child: Container(
+                              width: 95,
+                              height: 95,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/image2.jpeg'),
+                                      fit: BoxFit.cover)),
+                            ),
                           ),
                           SizedBox(
                             height: 5,
@@ -106,9 +120,16 @@ class ChatView extends StatelessWidget {
                       ),
                       Column(
                         children: [
-                          CircleAvatar(
-                            backgroundColor: Colors.white,
-                            radius: 45,
+                          ClipOval(
+                            child: Container(
+                              width: 95,
+                              height: 95,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/image3.jpeg'),
+                                      fit: BoxFit.cover)),
+                            ),
                           ),
                           SizedBox(
                             height: 5,
@@ -125,9 +146,16 @@ class ChatView extends StatelessWidget {
                       ),
                       Column(
                         children: [
-                          CircleAvatar(
-                            backgroundColor: Colors.white,
-                            radius: 45,
+                          ClipOval(
+                            child: Container(
+                              width: 95,
+                              height: 95,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/image4.jpeg'),
+                                      fit: BoxFit.cover)),
+                            ),
                           ),
                           SizedBox(
                             height: 5,
@@ -161,10 +189,17 @@ class ChatView extends StatelessWidget {
                   child: Column(children: [
                     Row(
                       children: [
-                        CircleAvatar(
-                          radius: 50,
-                          backgroundColor: Colors.white,
-                        ),
+                        ClipOval(
+                            child: Container(
+                              width: 95,
+                              height: 95,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/image1.jpg'),
+                                      fit: BoxFit.cover)),
+                            ),
+                          ),
                         SizedBox(
                           width: 20,
                         ),
@@ -175,7 +210,8 @@ class ChatView extends StatelessWidget {
                                 Text(
                                   'Roshan',
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 17),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 17),
                                 ),
                                 SizedBox(
                                   width: 140,
@@ -183,25 +219,37 @@ class ChatView extends StatelessWidget {
                                 Text(
                                   '10:10',
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 17),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 17),
                                 ),
                               ],
                             ),
-                            SizedBox(height: 10,),
+                            SizedBox(
+                              height: 10,
+                            ),
                             Padding(
-                              padding: EdgeInsets.fromLTRB(0, 0, 60, 0),
-                              child: Text('Hello, Sir can i apply for Job?')),
+                                padding: EdgeInsets.fromLTRB(0, 0, 60, 0),
+                                child: Text('Hello, Sir can i apply for Job?')),
                           ],
                         )
                       ],
                     ),
-                    SizedBox(height: 25,),
+                    SizedBox(
+                      height: 25,
+                    ),
                     Row(
                       children: [
-                        CircleAvatar(
-                          radius: 50,
-                          backgroundColor: Colors.white,
-                        ),
+                        ClipOval(
+                            child: Container(
+                              width: 95,
+                              height: 95,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/image2.jpeg'),
+                                      fit: BoxFit.cover)),
+                            ),
+                          ),
                         SizedBox(
                           width: 20,
                         ),
@@ -212,7 +260,8 @@ class ChatView extends StatelessWidget {
                                 Text(
                                   'Zayn',
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 17),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 17),
                                 ),
                                 SizedBox(
                                   width: 160,
@@ -220,25 +269,37 @@ class ChatView extends StatelessWidget {
                                 Text(
                                   '10:10',
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 17),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 17),
                                 ),
                               ],
                             ),
-                            SizedBox(height: 10,),
+                            SizedBox(
+                              height: 10,
+                            ),
                             Padding(
-                              padding: EdgeInsets.fromLTRB(0, 0, 60, 0),
-                              child: Text('Hello, Sir can i apply for Job?')),
+                                padding: EdgeInsets.fromLTRB(0, 0, 60, 0),
+                                child: Text('Hello, Sir can i apply for Job?')),
                           ],
                         )
                       ],
                     ),
-                    SizedBox(height: 25,),
+                    SizedBox(
+                      height: 25,
+                    ),
                     Row(
                       children: [
-                        CircleAvatar(
-                          radius: 50,
-                          backgroundColor: Colors.white,
-                        ),
+                        ClipOval(
+                            child: Container(
+                              width: 95,
+                              height: 95,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/image3.jpeg'),
+                                      fit: BoxFit.cover)),
+                            ),
+                          ),
                         SizedBox(
                           width: 20,
                         ),
@@ -249,7 +310,8 @@ class ChatView extends StatelessWidget {
                                 Text(
                                   'Jake',
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 17),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 17),
                                 ),
                                 SizedBox(
                                   width: 160,
@@ -257,25 +319,37 @@ class ChatView extends StatelessWidget {
                                 Text(
                                   '10:10',
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 17),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 17),
                                 ),
                               ],
                             ),
-                            SizedBox(height: 10,),
+                            SizedBox(
+                              height: 10,
+                            ),
                             Padding(
-                              padding: EdgeInsets.fromLTRB(0, 0, 60, 0),
-                              child: Text('Hello, Sir can i apply for Job?')),
+                                padding: EdgeInsets.fromLTRB(0, 0, 60, 0),
+                                child: Text('Hello, Sir can i apply for Job?')),
                           ],
                         )
                       ],
                     ),
-                    SizedBox(height: 25,),
+                    SizedBox(
+                      height: 25,
+                    ),
                     Row(
                       children: [
-                        CircleAvatar(
-                          radius: 50,
-                          backgroundColor: Colors.white,
-                        ),
+                        ClipOval(
+                            child: Container(
+                              width: 95,
+                              height: 95,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/image4.jpeg'),
+                                      fit: BoxFit.cover)),
+                            ),
+                          ),
                         SizedBox(
                           width: 20,
                         ),
@@ -286,7 +360,8 @@ class ChatView extends StatelessWidget {
                                 Text(
                                   'Paul',
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 17),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 17),
                                 ),
                                 SizedBox(
                                   width: 160,
@@ -294,25 +369,37 @@ class ChatView extends StatelessWidget {
                                 Text(
                                   '10:10',
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 17),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 17),
                                 ),
                               ],
                             ),
-                            SizedBox(height: 10,),
+                            SizedBox(
+                              height: 10,
+                            ),
                             Padding(
-                              padding: EdgeInsets.fromLTRB(0, 0, 60, 0),
-                              child: Text('Hello, Sir can i apply for Job?')),
+                                padding: EdgeInsets.fromLTRB(0, 0, 60, 0),
+                                child: Text('Hello, Sir can i apply for Job?')),
                           ],
                         )
                       ],
                     ),
-                    SizedBox(height: 25,),
+                    SizedBox(
+                      height: 25,
+                    ),
                     Row(
                       children: [
-                        CircleAvatar(
-                          radius: 50,
-                          backgroundColor: Colors.white,
-                        ),
+                        ClipOval(
+                            child: Container(
+                              width: 95,
+                              height: 95,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/image4.jpeg'),
+                                      fit: BoxFit.cover)),
+                            ),
+                          ),
                         SizedBox(
                           width: 20,
                         ),
@@ -321,61 +408,28 @@ class ChatView extends StatelessWidget {
                             Row(
                               children: [
                                 Text(
-                                  'Roshan',
+                                  'Paul',
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 17),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 17),
                                 ),
                                 SizedBox(
-                                  width: 140,
+                                  width: 160,
                                 ),
                                 Text(
                                   '10:10',
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 17),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 17),
                                 ),
                               ],
                             ),
-                            SizedBox(height: 10,),
-                            Padding(
-                              padding: EdgeInsets.fromLTRB(0, 0, 60, 0),
-                              child: Text('Hello, Sir can i apply for Job?')),
-                          ],
-                        )
-                      ],
-                    ),
-                    SizedBox(height: 25,),
-                    Row(
-                      children: [
-                        CircleAvatar(
-                          radius: 50,
-                          backgroundColor: Colors.white,
-                        ),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text(
-                                  'Roshan',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 17),
-                                ),
-                                SizedBox(
-                                  width: 140,
-                                ),
-                                Text(
-                                  '10:10',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 17),
-                                ),
-                              ],
+                            SizedBox(
+                              height: 10,
                             ),
-                            SizedBox(height: 10,),
                             Padding(
-                              padding: EdgeInsets.fromLTRB(0, 0, 60, 0),
-                              child: Text('Hello, Sir can i apply for Job?')),
+                                padding: EdgeInsets.fromLTRB(0, 0, 60, 0),
+                                child: Text('Hello, Sir can i apply for Job?')),
                           ],
                         )
                       ],
