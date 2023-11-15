@@ -14,9 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SignUpView(),
-      // initialRoute: AppRoute.dashboardRoute,
-      // routes: AppRoute.getApplicationRoute(),
+      home: BottomNav(),
     );
   }
 }

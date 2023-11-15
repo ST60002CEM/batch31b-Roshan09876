@@ -66,6 +66,8 @@ class _LoginViewState extends State<LoginView> {
                     return 'Please Enter your Email';
                   } else if (value.length < 6) {
                     return 'Please Enter at lease 6 character';
+                  }else if (!value.contains('@')) {
+                    return '@ is missing in email';
                   }
                   return null;
                 },

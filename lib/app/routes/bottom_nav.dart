@@ -15,8 +15,8 @@ class _BottomNavState extends State<BottomNav> {
 
 //Making list for bottomnav through list 
   List<Widget> _widgetOption = <Widget>[
-    ProfileView(),
     DashboardView(),
+    ProfileView(),
     ChatView()
   ];
 
@@ -36,16 +36,16 @@ class _BottomNavState extends State<BottomNav> {
       bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.blue,
           selectedItemColor: Colors.white,
-          unselectedItemColor: Colors.white,
+          unselectedItemColor: Colors.black,
           currentIndex: _selectedIndex,
           onTap: _onItemtap,
           iconSize: 28,
           items: [
             BottomNavigationBarItem(
-                icon: Icon(Icons.verified_user), label: 'Profile'),
+                icon: Icon(Icons.home), label: 'Home'),
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
+              icon: Icon(Icons.verified_user),
+              label: 'Profile',
             ),
             BottomNavigationBarItem(
                 icon: Icon(Icons.chat), label: 'Chat'),
