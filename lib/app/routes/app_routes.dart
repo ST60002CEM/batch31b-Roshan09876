@@ -1,4 +1,5 @@
 import 'package:job_finder/view/login_view.dart';
+import 'package:job_finder/view/register_view.dart';
 
 class AppRoute{
   //Private Constructor
@@ -10,7 +11,7 @@ class AppRoute{
   static getApplicationRoute(){
     return{
       loginRoute: (context) => LoginView(),
-      // registerRoute: (context) => RegisterView(),
+      registerRoute: (context) => RegisterView(),
     };
   }
 

@@ -1,26 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:job_finder/view/register_view.dart';
+import 'package:job_finder/view/login_view.dart';
 
-
-class LoginView extends StatefulWidget {
-  LoginView({super.key});
+class RegisterView extends StatefulWidget {
+  RegisterView({super.key});
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<RegisterView> createState() => _RegisterViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _RegisterViewState extends State<RegisterView> {
   bool _obsecuretext = true;
+
+  final _key = GlobalKey<FormState>();
+
+  final firstcontroller = TextEditingController();
+
+  final secondcontroller = TextEditingController();
+
+  final thirdcontroller = TextEditingController();
 
   final _gap = SizedBox(
     height: 10,
   );
-
-  final key = GlobalKey<FormState>();
-
-  final emailcontroller = TextEditingController();
-
-  final passwordcontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -33,36 +34,56 @@ class _LoginViewState extends State<LoginView> {
           body: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Form(
-              key: key,
+              key: _key,
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(10),
+                    padding: EdgeInsets.all(65),
                     child: Container(
-                      height: 330,
-                      width: 430,
+                      height: 130,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(200),
                           image: DecorationImage(
-                            image: AssetImage('assets/images/signin.png'),
+                            image: AssetImage('assets/images/signup.png'),
                           )),
                     ),
                   ),
-                  _gap,
+                  SizedBox(
+                    height: 10,
+                  ),
                   Text(
-                    'Welcome!',
+                    'Hello, Welcome!',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
                   ),
                   _gap,
                   Text(
-                    'Fill the below fields for Sign In',
+                    'Fill the below fields for SignUp',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  TextFormField(
+                    controller: firstcontroller,
+                    decoration: InputDecoration(
+                        prefixIcon: Icon(
+                          Icons.text_increase_outlined,
+                          color: Colors.black,
+                        ),
+                        labelText: 'Full Name',
+                        border: OutlineInputBorder()),
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please Enter Your FullName';
+                      }
+                      return null;
+                    },
                   ),
                   SizedBox(
                     height: 30,
                   ),
                   TextFormField(
-                    controller: emailcontroller,
+                    controller: secondcontroller,
                     decoration: InputDecoration(
                         prefixIcon: Icon(
                           Icons.email,
@@ -72,7 +93,7 @@ class _LoginViewState extends State<LoginView> {
                         border: OutlineInputBorder()),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Please Enter you email';
+                        return 'Please Enter Your Email';
                       } else if (!value.contains('@')) {
                         return '@ is missing';
                       }
@@ -83,6 +104,7 @@ class _LoginViewState extends State<LoginView> {
                     height: 30,
                   ),
                   TextFormField(
+                    controller: thirdcontroller,
                     obscureText: _obsecuretext,
                     decoration: InputDecoration(
                         prefixIcon: Icon(
@@ -106,9 +128,9 @@ class _LoginViewState extends State<LoginView> {
                         )),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Please Enter Your password';
+                        return 'Please Enter Password';
                       } else if (value.length < 6) {
-                        return 'Passwors must contai six letters';
+                        return 'Password must containe 6 letters';
                       }
                       return null;
                     },
@@ -120,15 +142,15 @@ class _LoginViewState extends State<LoginView> {
                       style:
                           ElevatedButton.styleFrom(minimumSize: Size(200, 60)),
                       onPressed: () {
-                        if (key.currentState!.validate()) {
+                        if (_key.currentState!.validate()) {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => RegisterView()));
+                                  builder: (context) => LoginView()));
                         }
                       },
                       child: Text(
-                        'Sign In',
+                        'Sign Up',
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 20),
                       )),
@@ -137,15 +159,13 @@ class _LoginViewState extends State<LoginView> {
                   ),
                   InkWell(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => RegisterView()));
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => LoginView()));
                     },
                     child: Text(
-                      "Don't have an account? Sign Up",
+                      'Already have an account? Login',
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
                     ),
                   ),
                 ],
