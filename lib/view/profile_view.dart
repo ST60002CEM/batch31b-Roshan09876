@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:job_finder/view/login_view.dart';
+
 
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
@@ -292,8 +292,8 @@ class ProfileView extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.red, minimumSize: Size(150, 50)),
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LoginView()));
+                  // Navigator.push(context,
+                  //     MaterialPageRoute(builder: (context) => LoginView()));
                 },
                 child: Text(
                   'Log Out',

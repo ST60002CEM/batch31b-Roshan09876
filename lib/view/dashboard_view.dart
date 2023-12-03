@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:job_finder/view/profile_view.dart';
 
 class DashboardView extends StatefulWidget {
   const DashboardView({super.key});
