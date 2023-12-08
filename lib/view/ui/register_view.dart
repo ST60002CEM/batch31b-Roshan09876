@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:job_finder/view/login_view.dart';
+import 'package:job_finder/view/ui/login_view.dart';
+import 'package:job_finder/view/theme/app_constants.dart';
 
 class RegisterView extends StatefulWidget {
   RegisterView({super.key});
@@ -68,7 +69,7 @@ class _RegisterViewState extends State<RegisterView> {
                     decoration: InputDecoration(
                         prefixIcon: Icon(
                           Icons.text_increase_outlined,
-                          color: Colors.black,
+                          color: Color(kDark.value),
                         ),
                         labelText: 'Full Name',
                         border: OutlineInputBorder()),
@@ -109,7 +110,7 @@ class _RegisterViewState extends State<RegisterView> {
                     decoration: InputDecoration(
                         prefixIcon: Icon(
                           Icons.password,
-                          color: Colors.black,
+                          color: Color(kDark.value),
                         ),
                         labelText: 'Password',
                         border: OutlineInputBorder(),
@@ -123,7 +124,7 @@ class _RegisterViewState extends State<RegisterView> {
                             _obsecuretext
                                 ? Icons.visibility
                                 : Icons.visibility_off,
-                            color: Colors.black,
+                            color: Color(kDark.value),
                           ),
                         )),
                     validator: (value) {

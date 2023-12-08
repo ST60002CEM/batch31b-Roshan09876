@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:job_finder/view/register_view.dart';
+import 'package:job_finder/view/ui/register_view.dart';
+import 'package:job_finder/view/theme/app_constants.dart';
 
 class LoginView extends StatefulWidget {
   LoginView({super.key});
@@ -65,7 +66,7 @@ class _LoginViewState extends State<LoginView> {
                     decoration: InputDecoration(
                         prefixIcon: Icon(
                           Icons.email,
-                          color: Colors.black,
+                          color: Color(kDark.value),
                         ),
                         labelText: 'Email',
                         border: OutlineInputBorder()),
@@ -86,7 +87,7 @@ class _LoginViewState extends State<LoginView> {
                     decoration: InputDecoration(
                         prefixIcon: Icon(
                           Icons.password,
-                          color: Colors.black,
+                          color: Color(kDark.value),
                         ),
                         labelText: 'Password',
                         border: OutlineInputBorder(),
@@ -96,9 +97,12 @@ class _LoginViewState extends State<LoginView> {
                               _obsecuretext = !_obsecuretext;
                             });
                           },
-                          child: Icon(_obsecuretext
-                              ? Icons.visibility
-                              : Icons.visibility_off),
+                          child: Icon(
+                            _obsecuretext
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: Color(kDark.value),
+                          ),
                         )),
                     validator: (value) {
                       if (value!.isEmpty) {
