@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:job_finder/app/routes/app_routes.dart';
 import 'package:job_finder/view/theme/app_constants.dart';
-import 'package:job_finder/view/ui/drawer/height_spacer.dart';
+import 'package:job_finder/view/height_spacer.dart';
 import 'package:job_finder/view/ui/register_view.dart';
 
 class PageThree extends StatelessWidget {
@@ -50,8 +51,7 @@ class PageThree extends StatelessWidget {
             children: [
               OutlinedButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => RegisterView()));
+                  Navigator.pushNamed(context, AppRoute.mainscreenRoute);
                 },
                 style: OutlinedButton.styleFrom(
                   minimumSize: Size(160, 60),
@@ -69,8 +69,7 @@ class PageThree extends StatelessWidget {
               ),
               OutlinedButton(
                 onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => RegisterView()));
+                  Navigator.pushNamed(context, AppRoute.mainscreenRoute);
                 },
                 style: OutlinedButton.styleFrom(
                   minimumSize: Size(160, 60),

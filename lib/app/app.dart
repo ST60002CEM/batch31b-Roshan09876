@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: getApplicationTheme(),
       home: DashboardView(),
-      initialRoute: AppRoute.onBoardingScreenRoute,
+      initialRoute: AppRoute.hiddendrawerRoute,
       routes: AppRoute.getApplicationRoute(),
     );
   }

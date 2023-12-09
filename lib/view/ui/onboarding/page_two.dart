@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:job_finder/app/routes/app_routes.dart';
 import 'package:job_finder/view/theme/app_constants.dart';
-import 'package:job_finder/view/ui/drawer/height_spacer.dart';
+import 'package:job_finder/view/height_spacer.dart';
 
 class PageTwo extends StatelessWidget {
   const PageTwo({super.key});
