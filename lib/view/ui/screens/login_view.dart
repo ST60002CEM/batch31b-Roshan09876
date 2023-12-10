@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:job_finder/view/ui/register_view.dart';
-import 'package:job_finder/view/theme/app_constants.dart';
+import 'package:job_finder/view/ui/screens/register_view.dart';
+import 'package:job_finder/app/theme/constant/app_constants.dart';
 
 class LoginView extends StatefulWidget {
   LoginView({super.key});
@@ -27,7 +27,10 @@ class _LoginViewState extends State<LoginView> {
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('assets/images/login.png'), fit: BoxFit.cover)),
+              image: AssetImage('assets/images/login.png'), fit: BoxFit.cover), gradient: LinearGradient(colors: [
+                Color(kLight.value),
+                Color(kLightGrey.value)
+              ])),
       child: Scaffold(
           backgroundColor: Colors.transparent,
           body: Padding(
@@ -117,8 +120,9 @@ class _LoginViewState extends State<LoginView> {
                     height: 40,
                   ),
                   ElevatedButton(
-                      style:
-                          ElevatedButton.styleFrom(minimumSize: Size(200, 60)),
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(kDarkPurple.value),
+                          minimumSize: Size(200, 60)),
                       onPressed: () {
                         if (key.currentState!.validate()) {
                           Navigator.push(

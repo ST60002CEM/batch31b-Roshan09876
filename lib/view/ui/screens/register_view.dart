@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:job_finder/view/ui/login_view.dart';
-import 'package:job_finder/view/theme/app_constants.dart';
+import 'package:job_finder/view/ui/screens/login_view.dart';
+import 'package:job_finder/app/theme/constant/app_constants.dart';
 
 class RegisterView extends StatefulWidget {
   RegisterView({super.key});
@@ -141,7 +141,7 @@ class _RegisterViewState extends State<RegisterView> {
                   ),
                   ElevatedButton(
                       style:
-                          ElevatedButton.styleFrom(minimumSize: Size(200, 60)),
+                          ElevatedButton.styleFrom(backgroundColor: Color(kDarkPurple.value), minimumSize: Size(200, 60)),
                       onPressed: () {
                         if (_key.currentState!.validate()) {
                           Navigator.push(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class BookMarks extends StatelessWidget {
-  const BookMarks({super.key});
+class BookMarksPage extends StatelessWidget {
+  const BookMarksPage ({super.key});
 
   @override
   Widget build(BuildContext context) {

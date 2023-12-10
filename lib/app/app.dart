@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:job_finder/app/routes/app_routes.dart';
-import 'package:job_finder/view/dashboard_view.dart';
-import 'package:job_finder/view/theme/themedata.dart';
+
+import 'package:job_finder/app/theme/themedata.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    ScreenUtil.init(context);
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: getApplicationTheme(),
-      home: DashboardView(),
-      initialRoute: AppRoute.hiddendrawerRoute,
-      routes: AppRoute.getApplicationRoute(),
+    return ScreenUtilInit(
+      designSize: Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: getApplicationTheme(),
+          initialRoute: AppRoute.bottomnavDashboardRoute,
+          routes: AppRoute.getApplicationRoute(),
+        );
+      },
     );
   }
 }

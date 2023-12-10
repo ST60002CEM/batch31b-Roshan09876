@@ -1,0 +1,53 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:job_finder/app/routes/app_routes.dart';
+import 'package:job_finder/app/theme/constant/app_constants.dart';
+import 'package:job_finder/app/theme/constant/height_spacer.dart';
+import 'package:job_finder/view/search/search_widget.dart';
+
+class MainScreenView extends StatelessWidget {
+  const MainScreenView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Search \n Find & Apply',
+                    style: GoogleFonts.openSans(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 40,
+                        color: Color(kDark.value))),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, AppRoute.profileviewRoute);
+                  },
+                  child: ClipOval(
+                    child: Container(
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage('assets/images/image3.jpeg'),
+                              fit: BoxFit.cover)),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            HeightSpacer(size: 20.h),
+            SearchWidget(
+              onTap: () {},
+            )
+          ]),
+        ),
+      ),
+    );
+  }
+}
