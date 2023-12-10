@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:job_finder/app/routes/app_routes.dart';
 import 'package:job_finder/app/theme/constant/app_constants.dart';
 import 'package:job_finder/app/theme/constant/height_spacer.dart';
+import 'package:job_finder/app/theme/reusable_text.dart';
 import 'package:job_finder/view/search/search_widget.dart';
 
 class MainScreenView extends StatelessWidget {
@@ -14,7 +15,7 @@ class MainScreenView extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(18.0),
           child: Column(children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -44,7 +45,29 @@ class MainScreenView extends StatelessWidget {
             HeightSpacer(size: 20.h),
             SearchWidget(
               onTap: () {},
-            )
+            ),
+            HeightSpacer(size: 20.h),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ReusableText(
+                    text: 'Popular Jobs',
+                    fontSize: 20.00,
+                    color: Color(kDark.value)),
+                IconButton(onPressed: () {}, icon: Icon(Icons.menu_open))
+              ],
+            ),
+            HeightSpacer(size: 40.h),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ReusableText(
+                    text: 'Recently Posted',
+                    fontSize: 20.00,
+                    color: Color(kDark.value)),
+                IconButton(onPressed: () {}, icon: Icon(Icons.menu_open))
+              ],
+            ),
           ]),
         ),
       ),

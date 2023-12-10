@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:job_finder/app/theme/constant/height_spacer.dart';
+import 'package:job_finder/app/theme/reusable_text.dart';
 import 'package:job_finder/view/ui/screens/login_view.dart';
 import 'package:job_finder/app/theme/constant/app_constants.dart';
 
@@ -20,9 +23,7 @@ class _RegisterViewState extends State<RegisterView> {
 
   final thirdcontroller = TextEditingController();
 
-  final _gap = SizedBox(
-    height: 10,
-  );
+  final _gap = HeightSpacer(size: 10.h);
 
   @override
   Widget build(BuildContext context) {
@@ -49,18 +50,16 @@ class _RegisterViewState extends State<RegisterView> {
                           )),
                     ),
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    'Hello, Welcome!',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
-                  ),
                   _gap,
-                  Text(
-                    'Fill the below fields for SignUp',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-                  ),
+                  ReusableText(
+                      text: 'Hello, Welcome',
+                      fontSize: 40,
+                      color: Color(kDark.value)),
+                  _gap,
+                  ReusableText(
+                      text: 'Fill the below fields for SignUp',
+                      fontSize: 25,
+                      color: Color(kDark.value)),
                   SizedBox(
                     height: 20,
                   ),
@@ -140,8 +139,9 @@ class _RegisterViewState extends State<RegisterView> {
                     height: 40,
                   ),
                   ElevatedButton(
-                      style:
-                          ElevatedButton.styleFrom(backgroundColor: Color(kDarkPurple.value), minimumSize: Size(200, 60)),
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(kDarkPurple.value),
+                          minimumSize: Size(200, 60)),
                       onPressed: () {
                         if (_key.currentState!.validate()) {
                           Navigator.push(
@@ -150,25 +150,26 @@ class _RegisterViewState extends State<RegisterView> {
                                   builder: (context) => LoginView()));
                         }
                       },
-                      child: Text(
-                        'Sign Up',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
+                      child: ReusableText(
+                        text: 'Sign Up',
+                        fontSize: 20,
+                        color: Color(kLight.value),
                       )),
                   SizedBox(
                     height: 15,
                   ),
                   InkWell(
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => LoginView()));
-                    },
-                    child: Text(
-                      'Already have an account? Login',
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                    ),
-                  ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginView()));
+                      },
+                      child: ReusableText(
+                        color: Color(kDark.value),
+                        fontSize: 15,
+                        text: 'Already have an account? Login',
+                      )),
                 ],
               ),
             ),

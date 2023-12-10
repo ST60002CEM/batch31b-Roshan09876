@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:job_finder/app/routes/app_routes.dart';
 import 'package:job_finder/app/theme/constant/height_spacer.dart';
 import 'package:job_finder/app/theme/constant/app_constants.dart';
+import 'package:job_finder/app/theme/reusable_text.dart';
 
 class FirstPage extends StatelessWidget {
   const FirstPage({super.key});
@@ -26,23 +28,17 @@ class FirstPage extends StatelessWidget {
               child: Image.asset('assets/images/onBoardingPage1_second.jpeg'),
             ),
             HeightSpacer(size: 30.h),
-            Text(
-              "Let's \n Get Started",
-              style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Color(kLight.value),
-                  fontSize: 30),
-            ),
+            ReusableText(text: "Let's \n Get Started", fontSize: 28, color: Color(kLight.value)),
             HeightSpacer(size: 20),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30.00),
               child: Text(
                 "Certainly! If you're searching for a job that aligns with your skills and preferred location, we're here to help you find your dream opportunity.",
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                    color: Color(kLight.value),
-                    wordSpacing: 3.0),
+                style: GoogleFonts.openSans(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                  color: Color(kLight.value),
+                ),
                 textAlign: TextAlign.center,
               ),
             ),

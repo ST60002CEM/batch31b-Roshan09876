@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:job_finder/app/theme/constant/height_spacer.dart';
+import 'package:job_finder/app/theme/reusable_text.dart';
 import 'package:job_finder/view/ui/screens/register_view.dart';
 import 'package:job_finder/app/theme/constant/app_constants.dart';
 
@@ -12,9 +15,7 @@ class LoginView extends StatefulWidget {
 class _LoginViewState extends State<LoginView> {
   bool _obsecuretext = true;
 
-  final _gap = SizedBox(
-    height: 10,
-  );
+  final _gap = HeightSpacer(size: 10.h);
 
   final key = GlobalKey<FormState>();
 
@@ -27,10 +28,9 @@ class _LoginViewState extends State<LoginView> {
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('assets/images/login.png'), fit: BoxFit.cover), gradient: LinearGradient(colors: [
-                Color(kLight.value),
-                Color(kLightGrey.value)
-              ])),
+              image: AssetImage('assets/images/login.png'), fit: BoxFit.cover),
+          gradient: LinearGradient(
+              colors: [Color(kLight.value), Color(kLightGrey.value)])),
       child: Scaffold(
           backgroundColor: Colors.transparent,
           body: Padding(
@@ -52,15 +52,15 @@ class _LoginViewState extends State<LoginView> {
                     ),
                   ),
                   _gap,
-                  Text(
-                    'Welcome!',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 40),
-                  ),
+                  ReusableText(
+                      text: 'Welcome!',
+                      fontSize: 40,
+                      color: Color(kDark.value)),
                   _gap,
-                  Text(
-                    'Fill the below fields for Sign In',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-                  ),
+                  ReusableText(
+                      text: 'Fill the below fields for Sign In',
+                      fontSize: 25,
+                      color: Color(kDark.value)),
                   SizedBox(
                     height: 30,
                   ),
@@ -131,27 +131,26 @@ class _LoginViewState extends State<LoginView> {
                                   builder: (context) => RegisterView()));
                         }
                       },
-                      child: Text(
-                        'Sign In',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 20),
+                      child: ReusableText(
+                        color: Color(kLight.value),
+                        fontSize: 20,
+                        text: 'Sign In',
                       )),
                   SizedBox(
                     height: 15,
                   ),
                   InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => RegisterView()));
-                    },
-                    child: Text(
-                      "Don't have an account? Sign Up",
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
-                    ),
-                  ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => RegisterView()));
+                      },
+                      child: ReusableText(
+                        text: "Don't have an account? Sign Up",
+                        fontSize: 15,
+                        color: Color(kDark.value),
+                      )),
                 ],
               ),
             ),
