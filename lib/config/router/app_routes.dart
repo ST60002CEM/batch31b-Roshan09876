@@ -1,4 +1,4 @@
-import 'package:job_finder/features/home/presentation/view/bottomnav/bottom_nav_dashboard_view.dart';
+import 'package:job_finder/features/home/presentation/view/bottomnav/home_view.dart';
 import 'package:job_finder/chat_view.dart';
 import 'package:job_finder/features/home/presentation/view/main_screen_view.dart';
 import 'package:job_finder/features/auth/presentation/view/ui/screens/first_page.dart';
@@ -15,7 +15,7 @@ class AppRoute {
   static const String firstpageRoute = '/firstpageRoute';
   static const String loginviewRoute = '/loginviewRoute';
   static const String registerviewRoute = '/registerviewRoute';
-  static const String bottomnavDashboardRoute = '/bottomnavDashboardRoute';
+  static const String homeViewRoute = '/homeViewRoute';
   static const String mainscreenRoute = '/mainscreenRoute';
   static const String chatviewRoute = '/chatviewRoute';
   static const String profileviewRoute = '/profileviewRoute';
@@ -26,7 +26,7 @@ class AppRoute {
       firstpageRoute: (context) => FirstPage(),
       loginviewRoute: (context) => LoginView(),
       registerviewRoute: (context) => RegisterView(),
-      bottomnavDashboardRoute: (context) => BottomNavDashboardView(),
+      homeViewRoute: (context) => HomeView(),
       mainscreenRoute: (context) => MainScreenView(),
       chatviewRoute: (context) => ChatView(),
       profileviewRoute: (context) => ProfileView(),
