@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:job_finder/app/app.dart';
+import 'package:job_finder/core/app.dart';
 
 
 void main() {

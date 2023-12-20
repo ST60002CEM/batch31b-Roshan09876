@@ -1,11 +1,11 @@
-import 'package:job_finder/view/ui/bottomnav/bottom_nav_dashboard_view.dart';
-import 'package:job_finder/view/chat_view.dart';
-import 'package:job_finder/view/ui/screens/main_screen_view.dart';
-import 'package:job_finder/view/ui/screens/first_page.dart';
-import 'package:job_finder/view/ui/screens/splash_screen.dart';
-import 'package:job_finder/view/ui/screens/login_view.dart';
-import 'package:job_finder/view/profile_view.dart';
-import 'package:job_finder/view/ui/screens/register_view.dart';
+import 'package:job_finder/features/home/presentation/view/bottomnav/bottom_nav_dashboard_view.dart';
+import 'package:job_finder/chat_view.dart';
+import 'package:job_finder/features/home/presentation/view/main_screen_view.dart';
+import 'package:job_finder/features/auth/presentation/view/ui/screens/first_page.dart';
+import 'package:job_finder/features/splash/splash_screen.dart';
+import 'package:job_finder/features/auth/presentation/view/ui/screens/login_view.dart';
+import 'package:job_finder/profile_view.dart';
+import 'package:job_finder/features/auth/presentation/view/ui/screens/register_view.dart';
 
 class AppRoute {
   //Private Constructor

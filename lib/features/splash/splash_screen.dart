@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:job_finder/app/routes/app_routes.dart';
-import 'package:job_finder/app/theme/constant/app_constants.dart';
+import 'package:job_finder/config/router/app_routes.dart';
+import 'package:job_finder/config/constant/app_constants.dart';
 import 'package:lottie/lottie.dart';
 
 class SplashScreen extends StatefulWidget {

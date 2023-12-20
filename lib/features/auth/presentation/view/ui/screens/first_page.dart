@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:job_finder/app/routes/app_routes.dart';
-import 'package:job_finder/app/theme/constant/height_spacer.dart';
-import 'package:job_finder/app/theme/constant/app_constants.dart';
-import 'package:job_finder/app/theme/reusable_text.dart';
+import 'package:job_finder/config/router/app_routes.dart';
+import 'package:job_finder/config/constant/height_spacer.dart';
+import 'package:job_finder/config/constant/app_constants.dart';
+import 'package:job_finder/config/constant/reusable_text.dart';
 
 class FirstPage extends StatelessWidget {
   const FirstPage({super.key});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:job_finder/app/theme/constant/app_constants.dart';
+import 'package:job_finder/config/constant/app_constants.dart';
 
 ThemeData getApplicationTheme() {
 

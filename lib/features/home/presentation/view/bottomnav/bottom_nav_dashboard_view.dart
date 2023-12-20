@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:job_finder/view/bookmarks/bookmarks_page.dart';
-import 'package:job_finder/view/chat/chat_list.dart';
-import 'package:job_finder/view/ui/screens/main_screen_view.dart';
-import 'package:job_finder/view/profile/profile_page.dart';
-import 'package:job_finder/app/theme/constant/app_constants.dart';
+import 'package:job_finder/features/auth/presentation/view/bookmarks/bookmarks_page.dart';
+import 'package:job_finder/features/auth/presentation/view/chat/chat_list.dart';
+import 'package:job_finder/features/home/presentation/view/main_screen_view.dart';
+import 'package:job_finder/features/auth/presentation/view/profile/profile_page.dart';
+import 'package:job_finder/config/constant/app_constants.dart';
 
 class BottomNavDashboardView extends StatefulWidget {
   const BottomNavDashboardView({super.key});

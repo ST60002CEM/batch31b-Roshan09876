@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:job_finder/app/routes/app_routes.dart';
+import 'package:job_finder/config/router/app_routes.dart';
 
-import 'package:job_finder/app/theme/themedata.dart';
+import 'package:job_finder/config/theme/themedata.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

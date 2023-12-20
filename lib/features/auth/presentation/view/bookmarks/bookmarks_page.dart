@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:job_finder/app/theme/constant/app_constants.dart';
-import 'package:job_finder/app/theme/reusable_text.dart';
+import 'package:job_finder/config/constant/app_constants.dart';
+import 'package:job_finder/config/constant/reusable_text.dart';
 
 class BookMarksPage extends StatelessWidget {
   const BookMarksPage({super.key});
