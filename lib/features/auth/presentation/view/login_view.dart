@@ -2,98 +2,80 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:job_finder/config/constant/height_spacer.dart';
 import 'package:job_finder/config/constant/reusable_text.dart';
-import 'package:job_finder/features/auth/presentation/view/ui/screens/login_view.dart';
+import 'package:job_finder/features/auth/presentation/view/register_view.dart';
 import 'package:job_finder/config/constant/app_constants.dart';
 
-class RegisterView extends StatefulWidget {
-  RegisterView({super.key});
+class LoginView extends StatefulWidget {
+  LoginView({super.key});
 
   @override
-  State<RegisterView> createState() => _RegisterViewState();
+  State<LoginView> createState() => _LoginViewState();
 }
 
-class _RegisterViewState extends State<RegisterView> {
+class _LoginViewState extends State<LoginView> {
   bool _obsecuretext = true;
 
-  final _key = GlobalKey<FormState>();
-
-  final firstcontroller = TextEditingController();
-
-  final secondcontroller = TextEditingController();
-
-  final thirdcontroller = TextEditingController();
-
   final _gap = HeightSpacer(size: 10.h);
+
+  final key = GlobalKey<FormState>();
+
+  final emailcontroller = TextEditingController();
+
+  final passwordcontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('assets/images/login.png'), fit: BoxFit.cover)),
+              image: AssetImage('assets/images/login.png'), fit: BoxFit.cover),
+          gradient: LinearGradient(
+              colors: [Color(kLight.value), Color(kLightGrey.value)])),
       child: Scaffold(
           backgroundColor: Colors.transparent,
           body: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Form(
-              key: _key,
+              key: key,
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(65),
+                    padding: EdgeInsets.all(10),
                     child: Container(
-                      height: 130,
+                      height: 330,
+                      width: 430,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(200),
                           image: DecorationImage(
-                            image: AssetImage('assets/images/signup.png'),
+                            image: AssetImage('assets/images/sigin.png'),
                           )),
                     ),
                   ),
                   _gap,
                   ReusableText(
-                      text: 'Hello, Welcome',
+                      text: 'Welcome!',
                       fontSize: 40,
                       color: Color(kDark.value)),
                   _gap,
                   ReusableText(
-                      text: 'Fill the below fields for SignUp',
+                      text: 'Fill the below fields for Sign In',
                       fontSize: 25,
                       color: Color(kDark.value)),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  TextFormField(
-                    controller: firstcontroller,
-                    decoration: InputDecoration(
-                        prefixIcon: Icon(
-                          Icons.text_increase_outlined,
-                          color: Color(kDark.value),
-                        ),
-                        labelText: 'Full Name',
-                        border: OutlineInputBorder()),
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'Please Enter Your FullName';
-                      }
-                      return null;
-                    },
-                  ),
                   SizedBox(
                     height: 30,
                   ),
                   TextFormField(
-                    controller: secondcontroller,
+                    controller: emailcontroller,
                     decoration: InputDecoration(
                         prefixIcon: Icon(
                           Icons.email,
-                          color: Colors.black,
+                          color: Color(kDark.value),
                         ),
                         labelText: 'Email',
                         border: OutlineInputBorder()),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Please Enter Your Email';
+                        return 'Please Enter you email';
                       } else if (!value.contains('@')) {
                         return '@ is missing';
                       }
@@ -104,7 +86,6 @@ class _RegisterViewState extends State<RegisterView> {
                     height: 30,
                   ),
                   TextFormField(
-                    controller: thirdcontroller,
                     obscureText: _obsecuretext,
                     decoration: InputDecoration(
                         prefixIcon: Icon(
@@ -128,9 +109,9 @@ class _RegisterViewState extends State<RegisterView> {
                         )),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Please Enter Password';
+                        return 'Please Enter Your password';
                       } else if (value.length < 6) {
-                        return 'Password must containe 6 letters';
+                        return 'Passwors must contai six letters';
                       }
                       return null;
                     },
@@ -143,17 +124,17 @@ class _RegisterViewState extends State<RegisterView> {
                           backgroundColor: Color(kDarkPurple.value),
                           minimumSize: Size(200, 60)),
                       onPressed: () {
-                        if (_key.currentState!.validate()) {
+                        if (key.currentState!.validate()) {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => LoginView()));
+                                  builder: (context) => RegisterView()));
                         }
                       },
                       child: ReusableText(
-                        text: 'Sign Up',
-                        fontSize: 20,
                         color: Color(kLight.value),
+                        fontSize: 20,
+                        text: 'Sign In',
                       )),
                   SizedBox(
                     height: 15,
@@ -163,12 +144,12 @@ class _RegisterViewState extends State<RegisterView> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => LoginView()));
+                                builder: (context) => RegisterView()));
                       },
                       child: ReusableText(
-                        color: Color(kDark.value),
+                        text: "Don't have an account? Sign Up",
                         fontSize: 15,
-                        text: 'Already have an account? Login',
+                        color: Color(kDark.value),
                       )),
                 ],
               ),

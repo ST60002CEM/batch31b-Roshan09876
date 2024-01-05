@@ -48,7 +48,7 @@ class FirstPage extends StatelessWidget {
               children: [
                 OutlinedButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, AppRoute.registerviewRoute);
+                    Navigator.pushNamed(context, AppRoute.loginviewRoute);
                   },
                   style: OutlinedButton.styleFrom(
                     minimumSize: Size(160, 60),

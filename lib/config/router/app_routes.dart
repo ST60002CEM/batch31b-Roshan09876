@@ -1,11 +1,11 @@
 import 'package:job_finder/features/home/presentation/view/bottomnav/home_view.dart';
 import 'package:job_finder/chat_view.dart';
 import 'package:job_finder/features/home/presentation/view/main_screen_view.dart';
-import 'package:job_finder/features/auth/presentation/view/ui/screens/first_page.dart';
+import 'package:job_finder/features/view/ui/screens/first_page.dart';
 import 'package:job_finder/features/splash/splash_screen.dart';
-import 'package:job_finder/features/auth/presentation/view/ui/screens/login_view.dart';
+import 'package:job_finder/features/auth/presentation/view/login_view.dart';
 import 'package:job_finder/profile_view.dart';
-import 'package:job_finder/features/auth/presentation/view/ui/screens/register_view.dart';
+import 'package:job_finder/features/auth/presentation/view/register_view.dart';
 
 class AppRoute {
   //Private Constructor
