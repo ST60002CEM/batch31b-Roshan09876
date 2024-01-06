@@ -13,7 +13,7 @@ class AuthRepository {
 
   AuthRepository({required Dio dio}) : _dio = dio;
 
-  Future<Either<Failure, void>> register(Map<String, dynamic> userData) async {
+  Future<Either<Failure, bool>> register(Map<String, dynamic> userData) async {
     try {
       var response = await _dio.post(ApiEndpoints.signUp, data: userData);
       if (response.statusCode == 200) {

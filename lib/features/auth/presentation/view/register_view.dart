@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:job_finder/config/constant/height_spacer.dart';
 import 'package:job_finder/config/constant/reusable_text.dart';
+import 'package:job_finder/features/auth/data/datasource/user_notifier.dart';
 import 'package:job_finder/features/auth/presentation/view/login_view.dart';
 import 'package:job_finder/config/constant/app_constants.dart';
 
@@ -18,11 +19,13 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
 
   final _key = GlobalKey<FormState>();
 
-  final firstcontroller = TextEditingController();
+  final firstNameController = TextEditingController();
 
-  final secondcontroller = TextEditingController();
+  final lastNameController = TextEditingController();
 
-  final thirdcontroller = TextEditingController();
+  final emailController = TextEditingController();
+
+  final password = TextEditingController();
 
   final _gap = HeightSpacer(size: 10.h);
 
@@ -66,7 +69,7 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                       height: 20,
                     ),
                     TextFormField(
-                      controller: firstcontroller,
+                      controller: firstNameController,
                       decoration: InputDecoration(
                           prefixIcon: Icon(
                             Icons.text_increase_outlined,
@@ -85,7 +88,7 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                       height: 30,
                     ),
                     TextFormField(
-                      controller: firstcontroller,
+                      controller: lastNameController,
                       decoration: InputDecoration(
                           prefixIcon: Icon(
                             Icons.text_increase_outlined,
@@ -104,7 +107,7 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                       height: 30,
                     ),
                     TextFormField(
-                      controller: secondcontroller,
+                      controller: emailController,
                       decoration: InputDecoration(
                           prefixIcon: Icon(
                             Icons.email,
@@ -125,7 +128,7 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                       height: 30,
                     ),
                     TextFormField(
-                      controller: thirdcontroller,
+                      controller: password,
                       obscureText: _obsecuretext,
                       decoration: InputDecoration(
                           prefixIcon: Icon(
@@ -163,13 +166,41 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Color(kDarkPurple.value),
                             minimumSize: Size(200, 60)),
-                        onPressed: () {
-                          // if (_key.currentState!.validate()) {
-                          //   // Navigator.push(
-                          //   //     context,
-                          //   //     MaterialPageRoute(
-                          //   //         builder: (context) => LoginView()));
-                          // }
+                        onPressed: () async {
+                          if (_key.currentState!.validate()) {
+                            final userData = {
+                              'firstName': firstNameController.text,
+                              'lastName': lastNameController.text,
+                              'email': emailController.text,
+                              // 'password': password.text,
+                            };
+                            final result = await ref
+                                .read(userNotifierProvider)
+                                .register(userData);
+                            result.fold(
+                                (Failure) => ScaffoldMessenger.of(context)
+                                    .showSnackBar(SnackBar(
+                                        backgroundColor: Colors.red,
+                                        content: Center(
+                                          child: Text(
+                                            'Invalid Error : ${Failure.error}',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.white),
+                                          ),
+                                        ))),
+                                (Right) => ScaffoldMessenger.of(context)
+                                    .showSnackBar(SnackBar(
+                                        backgroundColor: Colors.blue,
+                                        content: Center(
+                                          child: Text(
+                                            'User Created Successfully',
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.white),
+                                          ),
+                                        ))));
+                          }
                         },
                         child: ReusableText(
                           text: 'Sign Up',
