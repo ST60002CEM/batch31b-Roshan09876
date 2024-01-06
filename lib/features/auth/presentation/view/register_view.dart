@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:job_finder/config/constant/height_spacer.dart';
 import 'package:job_finder/config/constant/reusable_text.dart';
 import 'package:job_finder/features/auth/presentation/view/login_view.dart';
 import 'package:job_finder/config/constant/app_constants.dart';
 
-class RegisterView extends StatefulWidget {
+class RegisterView extends ConsumerStatefulWidget {
   RegisterView({super.key});
 
   @override
-  State<RegisterView> createState() => _RegisterViewState();
+  ConsumerState<RegisterView> createState() => _RegisterViewState();
 }
 
-class _RegisterViewState extends State<RegisterView> {
+class _RegisterViewState extends ConsumerState<RegisterView> {
   bool _obsecuretext = true;
 
   final _key = GlobalKey<FormState>();
@@ -163,12 +164,12 @@ class _RegisterViewState extends State<RegisterView> {
                             backgroundColor: Color(kDarkPurple.value),
                             minimumSize: Size(200, 60)),
                         onPressed: () {
-                          if (_key.currentState!.validate()) {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => LoginView()));
-                          }
+                          // if (_key.currentState!.validate()) {
+                          //   // Navigator.push(
+                          //   //     context,
+                          //   //     MaterialPageRoute(
+                          //   //         builder: (context) => LoginView()));
+                          // }
                         },
                         child: ReusableText(
                           text: 'Sign Up',
