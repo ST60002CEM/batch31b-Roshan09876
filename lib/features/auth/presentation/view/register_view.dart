@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:job_finder/config/constant/height_spacer.dart';
 import 'package:job_finder/config/constant/reusable_text.dart';
-import 'package:job_finder/features/auth/data/datasource/user_notifier.dart';
+import 'package:job_finder/features/auth/presentation/state/user_notifier.dart';
 import 'package:job_finder/features/auth/presentation/view/login_view.dart';
 import 'package:job_finder/config/constant/app_constants.dart';
 
@@ -172,7 +172,7 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                               'firstName': firstNameController.text,
                               'lastName': lastNameController.text,
                               'email': emailController.text,
-                              // 'password': password.text,
+                              'password': password.text,
                             };
                             final result = await ref
                                 .read(userNotifierProvider)

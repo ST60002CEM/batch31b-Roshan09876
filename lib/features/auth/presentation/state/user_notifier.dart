@@ -17,7 +17,7 @@ class UserNotifier extends StateNotifier {
   // }
   Future<Either<Failure, bool>> register(Map<String, dynamic> userData) async{
     try{
-      final registerResult = await _authRepository.register(userData);
+      await _authRepository.register(userData);
      return Right(true);
     } catch(e){
       return Left(Failure(error: e.toString()));
