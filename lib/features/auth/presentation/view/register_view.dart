@@ -167,7 +167,7 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Color(kDarkPurple.value),
                             minimumSize: Size(200, 60)),
-                        onPressed: () async {
+                        onPressed: () {
                           if (_key.currentState!.validate()) {
                             final userData = AuthEntity(
                                 firstName: firstNameController.text.trim(),
@@ -177,6 +177,7 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                             ref
                                 .read(authViewModelProvider.notifier)
                                 .signUpFreelancer(userData);
+                                
                             // final userData = {
                             //   'firstName': firstNameController.text,
                             //   'lastName': lastNameController.text,

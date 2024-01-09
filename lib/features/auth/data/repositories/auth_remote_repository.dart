@@ -8,6 +8,8 @@ import 'package:job_finder/features/auth/domain/repository/auth_repository.dart'
 final authRemoteRepositoryProvider = Provider<AuthRepository>(
     (ref) => AuthRemoteRepository(ref.read(authRemoteDataSourceProvider)));
 
+// Provides an implementation for the signUpFreelancer method, forwarding the call to the data source.
+
 class AuthRemoteRepository implements AuthRepository {
   final AuthRemoteDataSource authRemoteDataSource;
 

@@ -14,6 +14,8 @@ class AuthRemoteDataSource {
   final Dio dio;
   AuthRemoteDataSource(this.dio);
 
+  // Converts an AuthEntity to an AuthApiModel before making the HTTP request.
+
   Future<Either<Failure, bool>> signUpFreelancer(AuthEntity freelancer) async {
     try {
       AuthApiModel authApiModel = AuthApiModel.fromEntity(freelancer);

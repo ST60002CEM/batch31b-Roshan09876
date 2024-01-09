@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:job_finder/features/auth/domain/entity/auth_entity.dart';
 import 'package:job_finder/features/auth/domain/usecases/signup_usecase.dart';
