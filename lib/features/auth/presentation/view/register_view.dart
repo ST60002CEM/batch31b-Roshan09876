@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:job_finder/config/constant/height_spacer.dart';
 import 'package:job_finder/config/constant/reusable_text.dart';
 import 'package:job_finder/features/auth/domain/entity/auth_entity.dart';
-import 'package:job_finder/features/auth/presentation/state/user_notifier.dart';
 import 'package:job_finder/features/auth/presentation/view/login_view.dart';
 import 'package:job_finder/config/constant/app_constants.dart';
 import 'package:job_finder/features/auth/presentation/view_model/auth_view_model.dart';
