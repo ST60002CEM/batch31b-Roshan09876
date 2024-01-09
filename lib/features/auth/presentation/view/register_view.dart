@@ -3,9 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:job_finder/config/constant/height_spacer.dart';
 import 'package:job_finder/config/constant/reusable_text.dart';
+import 'package:job_finder/features/auth/domain/entity/auth_entity.dart';
 import 'package:job_finder/features/auth/presentation/state/user_notifier.dart';
 import 'package:job_finder/features/auth/presentation/view/login_view.dart';
 import 'package:job_finder/config/constant/app_constants.dart';
+import 'package:job_finder/features/auth/presentation/view_model/auth_view_model.dart';
 
 class RegisterView extends ConsumerStatefulWidget {
   RegisterView({super.key});
@@ -168,15 +170,23 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                             minimumSize: Size(200, 60)),
                         onPressed: () async {
                           if (_key.currentState!.validate()) {
-                            final userData = {
-                              'firstName': firstNameController.text,
-                              'lastName': lastNameController.text,
-                              'email': emailController.text,
-                              'password': password.text,
-                            };
+                            final userData = AuthEntity(
+                                firstName: firstNameController.text.trim(),
+                                lastName: lastNameController.text.trim(),
+                                email: emailController.text.trim(),
+                                password: password.text.trim());
+                            ref
+                                .read(authViewModelProvider.notifier)
+                                .signUpFreelancer(userData);
+                            // final userData = {
+                            //   'firstName': firstNameController.text,
+                            //   'lastName': lastNameController.text,
+                            //   'email': emailController.text,
+                            //   'password': password.text,
+                            // };
                             // final result = await ref
                             //     .read(userNotifierProvider)
-                                // .register(userData);
+                            // .register(userData);
                             // result.fold(
                             //     (Failure) => ScaffoldMessenger.of(context)
                             //         .showSnackBar(SnackBar(
