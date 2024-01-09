@@ -7,7 +7,7 @@ class ApiEndpoints{
   static const Duration recieveTimeout = Duration(seconds: 1000);
 
   //For Windows Base URL
-  // static const String baseUrl = 'http://10.0.2.2:3000/api/v1/';
+  // static const String baseUrl = 'http://10.0.2.2:3000/api/';
   // For MAC
   static const String baseUrl = "http://localhost:5500/api/";
 

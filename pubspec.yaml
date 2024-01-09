@@ -51,6 +51,7 @@ dependencies:
   awesome_dio_interceptor: ^1.0.0
   build_runner: ^2.4.7
   dartz: ^0.10.1
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:

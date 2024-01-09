@@ -174,32 +174,32 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                               'email': emailController.text,
                               'password': password.text,
                             };
-                            final result = await ref
-                                .read(userNotifierProvider)
-                                .register(userData);
-                            result.fold(
-                                (Failure) => ScaffoldMessenger.of(context)
-                                    .showSnackBar(SnackBar(
-                                        backgroundColor: Colors.red,
-                                        content: Center(
-                                          child: Text(
-                                            'Invalid Error : ${Failure.error}',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.white),
-                                          ),
-                                        ))),
-                                (Right) => ScaffoldMessenger.of(context)
-                                    .showSnackBar(SnackBar(
-                                        backgroundColor: Colors.blue,
-                                        content: Center(
-                                          child: Text(
-                                            'User Created Successfully',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.white),
-                                          ),
-                                        ))));
+                            // final result = await ref
+                            //     .read(userNotifierProvider)
+                                // .register(userData);
+                            // result.fold(
+                            //     (Failure) => ScaffoldMessenger.of(context)
+                            //         .showSnackBar(SnackBar(
+                            //             backgroundColor: Colors.red,
+                            //             content: Center(
+                            //               child: Text(
+                            //                 'Invalid Error : ${Failure.error}',
+                            //                 style: TextStyle(
+                            //                     fontWeight: FontWeight.bold,
+                            //                     color: Colors.white),
+                            //               ),
+                            //             ))),
+                            //     (Right) => ScaffoldMessenger.of(context)
+                            //         .showSnackBar(SnackBar(
+                            //             backgroundColor: Colors.blue,
+                            //             content: Center(
+                            //               child: Text(
+                            //                 'User Created Successfully',
+                            //                 style: TextStyle(
+                            //                     fontWeight: FontWeight.bold,
+                            //                     color: Colors.white),
+                            //               ),
+                            //             ))));
                           }
                         },
                         child: ReusableText(
