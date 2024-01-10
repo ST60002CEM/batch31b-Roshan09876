@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:job_finder/features/view/bookmarks/bookmarks_page.dart';
 import 'package:job_finder/features/view/chat/chat_list.dart';
 import 'package:job_finder/features/view/profile/profile_page.dart';
-import 'package:job_finder/features/home/presentation/view/main_screen_view.dart';
+import 'package:job_finder/features/home/main_screen_view.dart';
 
 class HomeState {
   final List<Widget> lstWidget;
