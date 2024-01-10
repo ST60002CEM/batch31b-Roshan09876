@@ -3,9 +3,7 @@ import 'package:job_finder/chat_view.dart';
 import 'package:job_finder/features/home/presentation/view/main_screen_view.dart';
 import 'package:job_finder/features/view/ui/screens/first_page.dart';
 import 'package:job_finder/features/splash/splash_screen.dart';
-import 'package:job_finder/features/auth/presentation/view/login_view.dart';
 import 'package:job_finder/profile_view.dart';
-import 'package:job_finder/features/auth/presentation/view/register_view.dart';
 
 class AppRoute {
   //Private Constructor
@@ -24,8 +22,8 @@ class AppRoute {
     return {
       splashscreenRoute: (context) => SplashScreen(),
       firstpageRoute: (context) => FirstPage(),
-      loginviewRoute: (context) => LoginView(),
-      registerviewRoute: (context) => RegisterView(),
+      // loginviewRoute: (context) => LoginView(),
+      // registerviewRoute: (context) => RegisterView(),
       homeViewRoute: (context) => HomeView(),
       mainscreenRoute: (context) => MainScreenView(),
       chatviewRoute: (context) => ChatView(),
