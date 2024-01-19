@@ -38,4 +38,28 @@ class AuthRemoteDataSource {
           statusCode: e.response!.statusCode.toString() ?? '0'));
     }
   }
+    //Login AuthRemoteDataSource
+  Future<Either<Failure, bool>> signInFreelancer(
+      String email, String password) async {
+    try {
+      Response response = await dio.post(ApiEndpoints.signIn,
+          data: {'email': email, 'password': password});
+      if (response.statusCode == 200) {
+        //Retriving Token
+        String token = response.data['token'];
+        return const Right(true);
+      } else {
+        return Left(Failure(
+            error: response.data['message'],
+            statusCode: response.statusCode.toString()));
+      }
+    } on DioException catch (e) {
+      return Left(
+        Failure(
+          error: e.error.toString(),
+          statusCode: e.response?.statusCode.toString() ?? '0',
+        ),
+      );
+    }
+  }
 }
