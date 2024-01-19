@@ -43,7 +43,10 @@ class AuthRemoteDataSource {
       String email, String password) async {
     try {
       Response response = await dio.post(ApiEndpoints.signIn,
-          data: {'email': email, 'password': password});
+          data: {
+            'email': email, 
+            'password': password
+            });
       if (response.statusCode == 200) {
         //Retriving Token
         String token = response.data['token'];

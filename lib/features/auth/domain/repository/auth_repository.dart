@@ -9,4 +9,5 @@ final authRepositoryProvider =
 
 abstract class AuthRepository {
   Future<Either<Failure, bool>> signUpFreelancer(AuthEntity authEntity);
+  Future<Either<Failure, bool>> signInFreelancer(String email, String password);
 }
