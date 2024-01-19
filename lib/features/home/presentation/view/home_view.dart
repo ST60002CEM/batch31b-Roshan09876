@@ -21,7 +21,7 @@ class HomeView extends ConsumerWidget {
             color: Color(kLight.value),
             activeColor: Color(kLight.value),
             tabBackgroundColor: const Color.fromARGB(255, 19, 17, 17),
-            gap: 15,
+            gap: 2,
             tabs: [
               GButton(
                 onPressed: () {},
@@ -31,7 +31,7 @@ class HomeView extends ConsumerWidget {
               GButton(
                 onPressed: () {},
                 icon: Icons.bookmark,
-                text: 'Bookmarks',
+                text: 'Booked',
               ),
               GButton(
                 onPressed: () {},
