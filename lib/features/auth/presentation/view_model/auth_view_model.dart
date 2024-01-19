@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:job_finder/config/router/app_routes.dart';
 import 'package:job_finder/features/auth/domain/entity/auth_entity.dart';
 import 'package:job_finder/features/auth/domain/usecases/login_usecase.dart';
 import 'package:job_finder/features/auth/domain/usecases/signup_usecase.dart';
@@ -29,7 +30,8 @@ class AuthViewModel extends StateNotifier<AuthState> {
     resetMessage();
   }
 
-  Future<void> signInFreelancer(BuildContext context, String email, String password) async {
+  Future<void> signInFreelancer(
+      BuildContext context, String email, String password) async {
     state = state.copyWith(isLoading: true);
     final result = await loginUseCase.signInFreelancer(email, password);
     state = state.copyWith(isLoading: false);
@@ -43,7 +45,10 @@ class AuthViewModel extends StateNotifier<AuthState> {
           isLoading: false,
           showMessage: true,
           error: null,
+          
         );
+        
+        Navigator.popAndPushNamed(context, AppRoute.homeViewRoute);
       },
     );
   }

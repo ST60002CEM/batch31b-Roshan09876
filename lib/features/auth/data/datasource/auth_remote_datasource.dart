@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:job_finder/config/constant/api_endpoints.dart';
 import 'package:job_finder/core/common/Failure.dart';
 import 'package:job_finder/core/network/http_service.dart';
+import 'package:job_finder/core/shared_pref/user_shared_pref.dart';
 import 'package:job_finder/features/auth/data/models/auth_api_model.dart';
 import 'package:job_finder/features/auth/domain/entity/auth_entity.dart';
 
@@ -38,18 +39,20 @@ class AuthRemoteDataSource {
           statusCode: e.response!.statusCode.toString() ?? '0'));
     }
   }
-    //Login AuthRemoteDataSource
+
+  //Login AuthRemoteDataSource
   Future<Either<Failure, bool>> signInFreelancer(
       String email, String password) async {
     try {
       Response response = await dio.post(ApiEndpoints.signIn,
-          data: {
-            'email': email, 
-            'password': password
-            });
+          data: {'email': email, 'password': password});
       if (response.statusCode == 200) {
         //Retriving Token
         String token = response.data['token'];
+        await UserSharedPref().setUserToken(token);
+
+        final storedToken = await UserSharedPref().setUserToken(token);
+        print('Stored Token is: $storedToken');
         return const Right(true);
       } else {
         return Left(Failure(
