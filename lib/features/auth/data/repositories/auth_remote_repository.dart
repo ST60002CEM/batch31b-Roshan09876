@@ -19,4 +19,9 @@ class AuthRemoteRepository implements AuthRepository {
   Future<Either<Failure, bool>> signUpFreelancer(AuthEntity freelancer) async {
     return await authRemoteDataSource.signUpFreelancer(freelancer);
   }
+  
+  @override
+  Future<Either<Failure, bool>> signInFreelancer(String email, String password) async {
+    return await authRemoteDataSource.signInFreelancer(email, password);
+  }
 }

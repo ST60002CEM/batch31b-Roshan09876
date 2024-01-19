@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:job_finder/config/constant/height_spacer.dart';
 import 'package:job_finder/config/constant/reusable_text.dart';
 import 'package:job_finder/features/auth/presentation/view/register_view.dart';
 import 'package:job_finder/config/constant/app_constants.dart';
+import 'package:job_finder/features/auth/presentation/view_model/auth_view_model.dart';
 
-class LoginView extends StatefulWidget {
+class LoginView extends ConsumerStatefulWidget {
   LoginView({super.key});
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  ConsumerState<LoginView> createState() => _LoginViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _LoginViewState extends ConsumerState<LoginView> {
   bool _obsecuretext = true;
 
   final _gap = HeightSpacer(size: 10.h);
@@ -87,6 +89,7 @@ class _LoginViewState extends State<LoginView> {
                       height: 30,
                     ),
                     TextFormField(
+                      controller: passwordcontroller,
                       obscureText: _obsecuretext,
                       decoration: InputDecoration(
                           prefixIcon: Icon(
@@ -124,12 +127,18 @@ class _LoginViewState extends State<LoginView> {
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Color(kDarkPurple.value),
                             minimumSize: Size(200, 60)),
-                        onPressed: () {
+                        onPressed: () async {
                           if (key.currentState!.validate()) {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => RegisterView()));
+                            // Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //         builder: (context) => RegisterView()));
+                            ref
+                                .read(authViewModelProvider.notifier)
+                                .signInFreelancer(
+                                  context, 
+                                  emailcontroller.text,
+                                  passwordcontroller.text);
                           }
                         },
                         child: ReusableText(
