@@ -45,7 +45,7 @@ class SearchWidget extends StatelessWidget {
                             color: Color(kDarkGrey.value)),
                       ),
                       SizedBox(
-                        width: 140.w,
+                        width: 130.w,
                       ),
                       IconButton(
                         onPressed: () {},

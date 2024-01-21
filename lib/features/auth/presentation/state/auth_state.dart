@@ -19,7 +19,7 @@ class AuthState {
   AuthState copyWith({
     bool? isLoading,
     String? error,
-    String? imageName,
+    String?  imageName,
     bool? showMessage,
   }) {
     return AuthState(
