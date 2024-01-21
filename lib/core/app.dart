@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:job_finder/config/router/app_routes.dart';
 
 import 'package:job_finder/config/theme/themedata.dart';
-import 'package:job_finder/features/sensors/proximity.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
