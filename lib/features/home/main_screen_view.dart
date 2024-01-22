@@ -5,7 +5,8 @@ import 'package:job_finder/config/router/app_routes.dart';
 import 'package:job_finder/config/constant/app_constants.dart';
 import 'package:job_finder/config/constant/height_spacer.dart';
 import 'package:job_finder/config/constant/reusable_text.dart';
-import 'package:job_finder/features/view/search/search_widget.dart';
+import 'package:job_finder/features/home/popular_job.dart';
+import 'package:job_finder/features/home/search_widget.dart';
 
 class MainScreenView extends StatelessWidget {
   const MainScreenView({super.key});
@@ -57,7 +58,21 @@ class MainScreenView extends StatelessWidget {
                 IconButton(onPressed: () {}, icon: Icon(Icons.menu_open))
               ],
             ),
-            HeightSpacer(size: 40.h),
+            SizedBox(
+              height: height * 0.20,
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 4,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 19),
+                      child: PopularJob(
+                        onTap: () {},
+                      ),
+                    );
+                  }),
+            ),
+            HeightSpacer(size: 10.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

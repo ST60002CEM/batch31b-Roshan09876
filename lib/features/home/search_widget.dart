@@ -27,7 +27,7 @@ class SearchWidget extends StatelessWidget {
                         height: 40,
                         width: 40,
                         decoration: BoxDecoration(
-                            color: Color(kDark.value),
+                            color: Color(kOrange.value),
                             borderRadius:
                                 BorderRadius.all(Radius.circular(20))),
                         child: Icon(
@@ -41,8 +41,8 @@ class SearchWidget extends StatelessWidget {
                       Text(
                         'Search For Jobs',
                         style: TextStyle(
-                            fontWeight: FontWeight.w400,
-                            color: Color(kDarkGrey.value)),
+                            fontWeight: FontWeight.w800,
+                            color: Color(kOrange.value)),
                       ),
                       SizedBox(
                         width: 130.w,
