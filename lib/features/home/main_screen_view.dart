@@ -7,6 +7,7 @@ import 'package:job_finder/config/constant/height_spacer.dart';
 import 'package:job_finder/config/constant/reusable_text.dart';
 import 'package:job_finder/features/home/popular_job.dart';
 import 'package:job_finder/features/home/search_widget.dart';
+import 'package:job_finder/features/pagination/presentation/view/jobs_view.dart';
 
 class MainScreenView extends StatelessWidget {
   const MainScreenView({super.key});
@@ -67,7 +68,12 @@ class MainScreenView extends StatelessWidget {
                     return Padding(
                       padding: const EdgeInsets.only(right: 19),
                       child: PopularJob(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => JobsView()));
+                        },
                       ),
                     );
                   }),

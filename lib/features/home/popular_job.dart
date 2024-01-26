@@ -59,23 +59,21 @@ class PopularJob extends StatelessWidget {
                     color: Color(kDarkGrey.value)),
               ],
             ),
-            HeightSpacer(size: 10),
+            HeightSpacer(size: 5),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 ReusableText(
                     text: '70K', fontSize: 18, color: Color(kDark.value)),
                 WidthSpacer(size: 10),
                 ReusableText(
                     text: '/monthly', fontSize: 18, color: Color(kDark.value)),
-                WidthSpacer(size: 70),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: CircleAvatar(
-                    backgroundColor: Colors.black,
-                    radius: 15,
-                    child: Icon(
-                      Icons.chevron_right,
-                    ),
+                WidthSpacer(size: 50),
+                CircleAvatar(
+                  backgroundColor: Colors.black,
+                  radius: 15,
+                  child: Icon(
+                    Icons.chevron_right,
                   ),
                 )
               ],
