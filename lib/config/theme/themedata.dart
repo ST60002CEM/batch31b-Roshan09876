@@ -11,3 +11,4 @@ ThemeData getApplicationTheme() {
     textTheme: GoogleFonts.latoTextTheme(),
   );
 }
+

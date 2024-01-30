@@ -22,6 +22,7 @@ class JobRemoteDataSource {
     try {
       final response = await _dio.get(ApiEndpoints.getJob,
           queryParameters: {'page': page,});
+          print(response.data);
       final List<dynamic> data = response.data['jobs'];
       final post = data.map((json) => JobApiModel.fromJson(json)).toList();
       return Right(post);
