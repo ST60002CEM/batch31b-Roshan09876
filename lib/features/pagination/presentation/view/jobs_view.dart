@@ -25,6 +25,9 @@ class _JobsViewState extends ConsumerState<JobsView> {
         return true;
       },
       child: Scaffold(
+        floatingActionButton: FloatingActionButton(onPressed: (){
+          ref.read(jobViewModelProvider.notifier).getJobs();
+        }, child: Icon(Icons.downhill_skiing),),
         appBar: AppBar(
           title: Text('Jobs'),
         ),
