@@ -19,9 +19,12 @@ class JobRemoteDataSource {
   //making get request to get pagination data from backend
   Future<Either<Failure, List<JobApiModel>>> getJobs(
       int page) async {
+        print("GETTING JOBS");
     try {
       final response = await _dio.get(ApiEndpoints.getJob,
           queryParameters: {'page': page,});
+          print(response.data);
+      print(response);
       final List<dynamic> data = response.data['jobs'];
       final post = data.map((json) => JobApiModel.fromJson(json)).toList();
       return Right(post);
