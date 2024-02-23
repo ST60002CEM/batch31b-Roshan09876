@@ -5,7 +5,6 @@ import 'package:job_finder/features/home/main_screen_view.dart';
 import 'package:job_finder/features/home/presentation/view/home_view.dart';
 import 'package:job_finder/features/view/ui/screens/first_page.dart';
 import 'package:job_finder/features/splash/splash_screen.dart';
-import 'package:job_finder/profile_view.dart';
 
 class AppRoute {
   //Private Constructor
@@ -29,7 +28,6 @@ class AppRoute {
       homeViewRoute: (context) => HomeView(),
       mainscreenRoute: (context) => MainScreenView(),
       chatviewRoute: (context) => ChatView(),
-      profileviewRoute: (context) => ProfileView(),
     };
   }
 }
