@@ -176,7 +176,7 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                                 password: password.text.trim());
                             ref
                                 .read(authViewModelProvider.notifier)
-                                .signUpFreelancer(userData);
+                                .signUpFreelancer(userData, context);
                           }
                         },
                         child: ReusableText(

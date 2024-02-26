@@ -14,7 +14,7 @@ class JobApiModel extends Equatable {
   final String jobType;
 
   JobApiModel(
-      {
+      { 
         required this.id,
       required this.title,
       required this.description,

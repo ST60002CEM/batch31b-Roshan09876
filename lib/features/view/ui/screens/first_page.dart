@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/route_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:job_finder/config/router/app_routes.dart';
 import 'package:job_finder/config/constant/height_spacer.dart';
 import 'package:job_finder/config/constant/app_constants.dart';
 import 'package:job_finder/config/constant/reusable_text.dart';
+import 'package:job_finder/features/auth/presentation/view/login_view.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class FirstPage extends StatelessWidget {
   const FirstPage({super.key});
@@ -47,7 +51,14 @@ class FirstPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 OutlinedButton(
-                  onPressed: () {
+                  onPressed: () async{
+
+                    // final SharedPreferences prefs = await SharedPreferences.getInstance();
+                    // await prefs.setBool('entrypoint', true);
+                    // print(prefs);
+
+                    // Get.to(()=> LoginView());
+
                     Navigator.pushNamed(context, AppRoute.loginviewRoute);
                   },
                   style: OutlinedButton.styleFrom(
@@ -56,7 +67,7 @@ class FirstPage extends StatelessWidget {
                         color: Color(kLight.value)), // White outline color
                   ),
                   child: Text(
-                    'As a Admin',
+                    "Let's  Get  Started",
                     style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.bold,
@@ -64,24 +75,24 @@ class FirstPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                OutlinedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, AppRoute.registerviewRoute);
-                  },
-                  style: OutlinedButton.styleFrom(
-                    minimumSize: Size(160, 60),
-                    side: BorderSide(
-                        color: Color(kLight.value)), // White outline color
-                  ),
-                  child: Text(
-                    'As a Freelancer',
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white, // Text color
-                    ),
-                  ),
-                ),
+                // OutlinedButton(
+                //   onPressed: () {
+                //     Navigator.pushNamed(context, AppRoute.registerviewRoute);
+                //   },
+                //   style: OutlinedButton.styleFrom(
+                //     minimumSize: Size(160, 60),
+                //     side: BorderSide(
+                //         color: Color(kLight.value)), // White outline color
+                //   ),
+                //   child: Text(
+                //     'As a Freelancer',
+                //     style: TextStyle(
+                //       fontSize: 15,
+                //       fontWeight: FontWeight.bold,
+                //       color: Colors.white, // Text color
+                //     ),
+                //   ),
+                // ),
               ],
             ),
             HeightSpacer(size: 20.h),

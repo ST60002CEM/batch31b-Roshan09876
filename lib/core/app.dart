@@ -7,9 +7,10 @@ import 'package:job_finder/config/theme/themedata.dart';
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
+    return ScreenUtilInit (
       designSize: Size(360, 690),
       minTextAdapt: true,
       splitScreenMode: true,
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: getApplicationTheme(),
-          initialRoute: AppRoute.homeViewRoute,
+          initialRoute: AppRoute.splashscreenRoute,
           // home: Proximity(),
           routes: AppRoute.getApplicationRoute(),
         );

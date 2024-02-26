@@ -7,3 +7,4 @@ void main() {
     ProviderScope(child: const MyApp()),
   );
 }
+

@@ -6,7 +6,9 @@ import 'package:job_finder/core/common/Failure.dart';
 import 'package:job_finder/core/network/http_service.dart';
 import 'package:job_finder/core/shared_pref/user_shared_pref.dart';
 import 'package:job_finder/features/auth/data/models/auth_api_model.dart';
+import 'package:job_finder/features/auth/data/models/login_response_model.dart';
 import 'package:job_finder/features/auth/domain/entity/auth_entity.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final authRemoteDataSourceProvider = Provider<AuthRemoteDataSource>(
     (ref) => AuthRemoteDataSource(ref.read(httpServiceProvider)));
@@ -44,15 +46,24 @@ class AuthRemoteDataSource {
   Future<Either<Failure, bool>> signInFreelancer(
       String email, String password) async {
     try {
-      Response response = await dio.post(ApiEndpoints.signIn,
+      Response response = await dio.post(ApiEndpoints.signIn, 
           data: {'email': email, 'password': password});
       if (response.statusCode == 200) {
         //Retriving Token
-        String token = response.data['token'];
-        await UserSharedPref().setUserToken(token);
+        // String token = response.data['token'];
+        // await UserSharedPref().setUserToken(token);
 
-        final storedToken = await UserSharedPref().setUserToken(token);
-        print('Stored Token is: $storedToken');
+        // final storedToken = await UserSharedPref().setUserToken(token);
+        // print('Stored Token is: $storedToken');
+        final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+        String token = loginResponseModelFromJson(response.data).token;
+        String userId = loginResponseModelFromJson(response.data).id;
+
+        await prefs.setString('token', token);
+        await prefs.setString('userId', userId);
+        await prefs.setBool('loggedIn', true);
+
         return const Right(true);
       } else {
         return Left(Failure(
