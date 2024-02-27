@@ -46,23 +46,23 @@ class AuthRemoteDataSource {
   Future<Either<Failure, bool>> signInFreelancer(
       String email, String password) async {
     try {
-      Response response = await dio.post(ApiEndpoints.signIn, 
+      Response response = await dio.post(ApiEndpoints.signIn,
           data: {'email': email, 'password': password});
       if (response.statusCode == 200) {
         //Retriving Token
-        // String token = response.data['token'];
-        // await UserSharedPref().setUserToken(token);
+        String token = response.data['token'];
+        await UserSharedPref().setUserToken(token);
 
-        // final storedToken = await UserSharedPref().setUserToken(token);
-        // print('Stored Token is: $storedToken');
-        final SharedPreferences prefs = await SharedPreferences.getInstance();
+        final storedToken = await UserSharedPref().setUserToken(token);
+        print('Stored Token is: $storedToken');
+        // final SharedPreferences prefs = await SharedPreferences.getInstance();
 
-        String token = loginResponseModelFromJson(response.data).token;
-        String userId = loginResponseModelFromJson(response.data).id;
+        // String token = loginResponseModelFromJson(response.data).token;
+        // String userId = loginResponseModelFromJson(response.data).id;
 
-        await prefs.setString('token', token);
-        await prefs.setString('userId', userId);
-        await prefs.setBool('loggedIn', true);
+        // await prefs.setString('token', token);
+        // await prefs.setString('userId', userId);
+        // await prefs.setBool('loggedIn', true);
 
         return const Right(true);
       } else {
