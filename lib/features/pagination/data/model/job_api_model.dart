@@ -5,10 +5,11 @@ part 'job_api_model.g.dart';
 
 @JsonSerializable()
 class JobApiModel extends Equatable {
-  final int id;
+  @JsonKey(name: '_id')
+  final String id;
   final String title;
   final String description;
-  final int salary;
+  final String salary;
   final String location;
   final bool availabe;
   final String jobType;

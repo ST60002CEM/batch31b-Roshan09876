@@ -7,10 +7,10 @@ part of 'job_api_model.dart';
 // **************************************************************************
 
 JobApiModel _$JobApiModelFromJson(Map<String, dynamic> json) => JobApiModel(
-      id: json['id'] as int,
+      id: json['_id'] as String,
       title: json['title'] as String,
       description: json['description'] as String,
-      salary: json['salary'] as int,
+      salary: json['salary'] as String,
       location: json['location'] as String,
       availabe: json['availabe'] as bool,
       jobType: json['jobType'] as String,
@@ -18,7 +18,7 @@ JobApiModel _$JobApiModelFromJson(Map<String, dynamic> json) => JobApiModel(
 
 Map<String, dynamic> _$JobApiModelToJson(JobApiModel instance) =>
     <String, dynamic>{
-      'id': instance.id,
+      '_id': instance.id,
       'title': instance.title,
       'description': instance.description,
       'salary': instance.salary,

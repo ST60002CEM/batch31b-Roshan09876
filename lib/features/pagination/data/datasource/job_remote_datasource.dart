@@ -25,7 +25,7 @@ class JobRemoteDataSource {
           queryParameters: {'page': page,});
           print(response.data);
       print(response);
-      final List<dynamic> data = response.data['jobs'];
+      final List<dynamic> data = response.data['showJob'];
       final post = data.map((json) => JobApiModel.fromJson(json)).toList();
       return Right(post);
     } on DioException catch (e) {
