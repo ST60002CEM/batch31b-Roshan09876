@@ -59,3 +59,4 @@ class SearchWidget extends StatelessWidget {
     );
   }
 }
+
