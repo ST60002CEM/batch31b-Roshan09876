@@ -35,6 +35,30 @@ class JobViewModel extends StateNotifier<JobState> {
       });
     }
   }
+
+  Future<void> getJobById(int jobId) async {
+  state = state.copyWith(isLoading: true);
+  final currentState = state;
+  final jobs = currentState.jobApiModel;
+  final hasReachedmax = currentState.hasReachedmax;
+  if (!hasReachedmax) {
+    final result = await jobRemoteDataSource.getJobById(jobId);
+    result.fold(
+      (failure) {
+        state = state.copyWith(isLoading: false, hasReachedmax: false);
+        // Handle failure (e.g., show error message)
+      },
+      (job) {
+        state = state.copyWith(
+          jobApiModel: [...jobs, job],
+          isLoading: false,
+          hasReachedmax: true, // Assuming a single job is always fetched
+        );
+      },
+    );
+  }
+}
+
   Future resetState() async{
     state = JobState.initial();
     getJobs();

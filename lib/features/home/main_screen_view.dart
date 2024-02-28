@@ -8,7 +8,7 @@ import 'package:job_finder/config/constant/reusable_text.dart';
 import 'package:job_finder/features/home/popular_job.dart';
 import 'package:job_finder/features/home/search_widget.dart';
 import 'package:job_finder/features/pagination/presentation/view/jobs_view.dart';
-import 'package:job_finder/features/view/search_page.dart';
+import 'package:job_finder/features/search/presentation/view/search_page_view.dart';
 
 class MainScreenView extends StatelessWidget {
   const MainScreenView({super.key});
@@ -16,6 +16,12 @@ class MainScreenView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'JOB  PORTAL',
+        ),
+        backgroundColor: Color(kDark.value),
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(18.0),
@@ -50,7 +56,7 @@ class MainScreenView extends StatelessWidget {
               SearchWidget(
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SearchPage()));
+                      MaterialPageRoute(builder: (context) => SearchPageView()));
                 },
               ),
               HeightSpacer(size: 20.h),

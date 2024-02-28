@@ -1,6 +1,9 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:job_finder/config/constant/app_constants.dart';
+import 'package:job_finder/config/constant/reusable_text.dart';
+import 'package:job_finder/config/router/app_routes.dart';
 import 'package:job_finder/features/pagination/presentation/view_model/job_view_model.dart';
 
 class JobsView extends ConsumerStatefulWidget {
@@ -14,8 +17,18 @@ class _JobsViewState extends ConsumerState<JobsView> {
   final ScrollController scrollController = ScrollController();
 
   @override
+  void initState() {
+    // TODO: implement initState
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      ref.read(jobViewModelProvider.notifier).resetState();
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final state = ref.watch(jobViewModelProvider);
+
     return NotificationListener(
       onNotification: (notification) {
         if (notification is ScrollEndNotification) {
@@ -26,12 +39,6 @@ class _JobsViewState extends ConsumerState<JobsView> {
         return true;
       },
       child: Scaffold(
-        // floatingActionButton: FloatingActionButton(
-        //   onPressed: () {
-        //     ref.read(jobViewModelProvider.notifier).getJobs();
-        //   },
-        //   child: Icon(Icons.downhill_skiing),
-        // ),
         appBar: AppBar(
           title: Text('Jobs'),
           backgroundColor: Colors.black,
@@ -75,18 +82,18 @@ class _JobsViewState extends ConsumerState<JobsView> {
                               ListTile(
                                 // leading: Text(jobs.id.toString()),
                                 title: Padding(
-                                  padding: const EdgeInsets.only(bottom: 10),
-                                  child: Text(
-                                    jobs.title,
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20),
-                                  ),
-                                ),
+                                    padding: const EdgeInsets.only(bottom: 10),
+                                    child: ReusableText(
+                                        text: jobs.title,
+                                        fontSize: 25,
+                                        color: Color(kDark.value))),
                                 subtitle: Text(jobs.description.length > 100
                                     ? '${jobs.description.substring(0, 150)}...'
                                     : jobs.description),
-                                trailing: Text(jobs.salary),
+                                trailing: ReusableText(
+                                    text: jobs.salary,
+                                    fontSize: 15,
+                                    color: Color(kOrange.value)),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(18.0),
                                 ),
@@ -99,8 +106,15 @@ class _JobsViewState extends ConsumerState<JobsView> {
                                 child: SizedBox(
                                   width: double.infinity,
                                   child: ElevatedButton(
-                                      style: ElevatedButton.styleFrom(backgroundColor: Color(kOrange.value)),
-                                      onPressed: () {},
+                                      style: ElevatedButton.styleFrom(
+                                          backgroundColor:
+                                              Color(kOrange.value)),
+                                      onPressed: () {
+                                        Navigator.pushNamed(
+                                            context, AppRoute.jobsviewDetail,
+                                            arguments:
+                                                state.jobApiModel[index]);
+                                      },
                                       child: Text(
                                         'View  Details',
                                         style: TextStyle(
@@ -108,15 +122,6 @@ class _JobsViewState extends ConsumerState<JobsView> {
                                             fontSize: 15),
                                       )),
                                 ),
-                                // child: TextButton(
-                                //   onPressed: () {
-                                //     // Add your code here for handling the "View Details" button press
-                                //   },
-                                //   child: Text(
-                                //     'View Details',
-                                //     style: TextStyle(color: Colors.blue),
-                                //   ),
-                                // ),
                               ),
                             ],
                           ),

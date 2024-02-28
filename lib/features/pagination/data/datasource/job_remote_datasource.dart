@@ -32,4 +32,36 @@ class JobRemoteDataSource {
       return Left(Failure(error: e.message.toString()));
     }
   }
+
+  //Fetching Single job by id 
+  //  Future<Either<Failure, List<JobApiModel>>> getJobsByid(
+  //     int page) async {
+  //       print("GETTING JOBS");
+  //   try {
+  //     final response = await _dio.get(ApiEndpoints.singleJob,
+  //         queryParameters: {'page': page,});
+  //         print(response.data);
+  //     print(response);
+  //     final List<dynamic> data = response.data['showJob'];
+  //     final post = data.map((json) => JobApiModel.fromJson(json)).toList();
+  //     return Right(post);
+  //   } on DioException catch (e) {
+  //     return Left(Failure(error: e.message.toString()));
+  //   }
+  // }
+
+  Future<Either<Failure, JobApiModel>> getJobById(int jobId) async {
+  print("GETTING JOB BY ID");
+  try {
+    final response = await _dio.get('${ApiEndpoints.singleJob}/$jobId');
+    print(response.data);
+    print(response);
+    final dynamic data = response.data['job']; // Assuming 'job' is the key for a single job object
+    final job = JobApiModel.fromJson(data);
+    return Right(job);
+  } on DioException catch (e) {
+    return Left(Failure(error: e.message.toString()));
+  }
+}
+
 }

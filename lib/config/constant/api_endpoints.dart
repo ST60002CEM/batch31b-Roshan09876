@@ -15,6 +15,8 @@ class ApiEndpoints{
   static const String signUp = '/signUp';
   static const String signIn = '/signIn';
   static const String getJob = '/jobs/showallJobs';
+  static const String singleJob = '/job/:id';
+  static const String searchJob = '/jobs/show';
   // static const String getJob = '/type/jobs';
   
 }

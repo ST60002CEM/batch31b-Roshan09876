@@ -6,7 +6,6 @@ import 'package:job_finder/core/common/Failure.dart';
 import 'package:job_finder/core/network/http_service.dart';
 import 'package:job_finder/core/shared_pref/user_shared_pref.dart';
 import 'package:job_finder/features/auth/data/models/auth_api_model.dart';
-import 'package:job_finder/features/auth/data/models/login_response_model.dart';
 import 'package:job_finder/features/auth/domain/entity/auth_entity.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
