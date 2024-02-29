@@ -47,11 +47,6 @@ class SearchWidget extends StatelessWidget {
                       SizedBox(
                         width: 130.w,
                       ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.menu),
-                        color: Color(kDark.value),
-                      )
                     ]),
                   ),
                 ],

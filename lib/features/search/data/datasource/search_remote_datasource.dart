@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:job_finder/config/constant/api_endpoints.dart';
 import 'package:job_finder/core/common/Failure.dart';
 import 'package:job_finder/core/network/http_service.dart';
-import 'package:job_finder/features/auth/domain/entity/auth_entity.dart';
 import 'package:job_finder/features/search/data/model/search_api_model.dart';
 
 final searchRemoteDataSourceProvider = Provider<SearchRemoteDataSource>(

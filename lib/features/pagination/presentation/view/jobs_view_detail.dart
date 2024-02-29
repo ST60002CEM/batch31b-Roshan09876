@@ -14,7 +14,6 @@ class JobsViewDetail extends ConsumerStatefulWidget {
 
 class _JobsViewDetailState extends ConsumerState<JobsViewDetail> {
   
-  
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(jobViewModelProvider);
@@ -27,80 +26,83 @@ class _JobsViewDetailState extends ConsumerState<JobsViewDetail> {
             fontSize: 20,
             color: Color(kLight.value)),
         backgroundColor: Color(kDark.value),
+        elevation: 0, // Remove app bar elevation
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 20), // Adjusted padding
+            padding: const EdgeInsets.only(right: 20),
             child: Icon(Icons.bookmark),
           )
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20), // Added more padding
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30), // Adjusted padding
         child: Column(
-          crossAxisAlignment:
-              CrossAxisAlignment.start, // Align items to the start
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ReusableText(
-                text: '${jobs.title}', fontSize: 45, color: Color(kDark.value)),
+                text: '${jobs.title}', fontSize: 36, color: Color(kDark.value)), // Increased font size and added bold
             SizedBox(
-              height: 10, // Reduced height
+              height: 10,
             ),
             ReusableText(
                 text: 'Job Description',
-                fontSize: 30, // Adjusted font size
+                fontSize: 24, // Adjusted font size
+               // Added bold
                 color: Color(kDark.value)),
             SizedBox(
-              height: 5, // Reduced height
+              height: 5,
             ),
             ReusableText(
                 text:
-                    'iwebfriw berpio ubweporub fweopurb opcubwr gpowub rpolwu',
-                fontSize: 15,
+                    '${jobs.description}',
+                fontSize: 16,
                 color: Color(kDark.value)),
             SizedBox(
               height: 20,
             ),
             ReusableText(
-                text: 'Salary', fontSize: 30, color: Color(kDark.value)),
+                text: 'Salary', fontSize: 24, color: Color(kDark.value)), // Added bold
             SizedBox(
-              height: 5, // Reduced height
+              height: 5,
             ),
             ReusableText(
-                text: '34567iobwde fv owebfv89',
-                fontSize: 15,
+                text: '${jobs.salary}',
+                fontSize: 16,
                 color: Color(kOrange.value)),
             SizedBox(
               height: 20,
             ),
             ReusableText(
-                text: 'Location', fontSize: 30, color: Color(kDark.value)),
+                text: 'Location', fontSize: 24, color: Color(kDark.value)), // Added bold
             SizedBox(
-              height: 5, // Reduced height
+              height: 5,
             ),
             ReusableText(
-                text: 'wow', fontSize: 15, color: Color(kOrange.value)),
-            Expanded(
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Padding(
-                  padding:
-                      const EdgeInsets.only(bottom: 20), // Adjusted padding
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            minimumSize: Size(width, 70),
-                            backgroundColor: Color(kOrange.value)),
-                        onPressed: () {},
-                        child: Text(
-                          'Apply  Now',
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 25),
-                        )),
+                text: '${jobs.location}', fontSize: 16, color: Color(kOrange.value)),
+            SizedBox(
+              height: 40,
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                primary: Color(kOrange.value),
+                padding: EdgeInsets.symmetric(vertical: 16),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+              ),
+              child: SizedBox(
+                width: double.infinity,
+                child: Center(
+                  child: Text(
+                    'Apply Now',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
               ),
             ),
+            SizedBox(height: 20),
           ],
         ),
       ),
