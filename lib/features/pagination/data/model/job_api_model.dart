@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:job_finder/features/pagination/domain/entity/job_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'job_api_model.g.dart';
@@ -15,8 +16,7 @@ class JobApiModel extends Equatable {
   final String jobType;
 
   JobApiModel(
-      { 
-        required this.id,
+      {required this.id,
       required this.title,
       required this.description,
       required this.salary,
@@ -24,11 +24,36 @@ class JobApiModel extends Equatable {
       required this.availabe,
       required this.jobType});
 
-      //From JSON
-      factory JobApiModel.fromJson(Map<String, dynamic> json)=> _$JobApiModelFromJson(json);
+  //toEntity
+  factory JobApiModel.toEntity(JobApiModel jobApiModel) {
+    return JobApiModel(
+        id: jobApiModel.id,
+        title: jobApiModel.title,
+        description: jobApiModel.description,
+        salary: jobApiModel.salary,
+        location: jobApiModel.location,
+        availabe: jobApiModel.availabe,
+        jobType: jobApiModel.jobType);
+  }
 
-      //To JSON
-      Map<String, dynamic> toJson() => _$JobApiModelToJson(this);
+  //From Entity
+  factory JobApiModel.fromEntity(JobEntity jobEntity) {
+    return JobApiModel(
+        id: jobEntity.id,
+        title: jobEntity.title,
+        description: jobEntity.description,
+        salary: jobEntity.salary,
+        location: jobEntity.location,
+        availabe: jobEntity.availabe,
+        jobType: jobEntity.jobType);
+  }
+
+  //From JSON
+  factory JobApiModel.fromJson(Map<String, dynamic> json) =>
+      _$JobApiModelFromJson(json);
+
+  //To JSON
+  Map<String, dynamic> toJson() => _$JobApiModelToJson(this);
 
   @override
   List<Object?> get props =>

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:job_finder/config/constant/app_constants.dart';
 import 'package:job_finder/config/constant/reusable_text.dart';
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+class ProfilePageView extends StatelessWidget {
+  const ProfilePageView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
