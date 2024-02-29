@@ -18,7 +18,6 @@ class _JobsViewState extends ConsumerState<JobsView> {
 
   @override
   void initState() {
-    // TODO: implement initState
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       ref.read(jobViewModelProvider.notifier).resetState();
     });

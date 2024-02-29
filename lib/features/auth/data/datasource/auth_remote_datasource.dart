@@ -54,20 +54,42 @@ class AuthRemoteDataSource {
 
         final storedToken = await UserSharedPref().setUserToken(token);
         print('Stored Token is: $storedToken');
-        // final SharedPreferences prefs = await SharedPreferences.getInstance();
-
-        // String token = loginResponseModelFromJson(response.data).token;
-        // String userId = loginResponseModelFromJson(response.data).id;
-
-        // await prefs.setString('token', token);
-        // await prefs.setString('userId', userId);
-        // await prefs.setBool('loggedIn', true);
-
         return const Right(true);
       } else {
         return Left(Failure(
             error: response.data['message'],
             statusCode: response.statusCode.toString()));
+      }
+    } on DioException catch (e) {
+      return Left(
+        Failure(
+          error: e.error.toString(),
+          statusCode: e.response?.statusCode.toString() ?? '0',
+        ),
+      );
+    }
+  }
+
+    Future<Either<Failure, AuthEntity>> getUser(String username) async {
+    try {
+      Response response = await dio.post(
+        ApiEndpoints.userProfile,
+        data: {
+          "username": username,
+        },
+      );
+
+      if (response.statusCode == 200) {
+        var user = AuthApiModel.fromJson(response.data['data']).toEntity();
+
+        return Right(user);
+      } else {
+        return Left(
+          Failure(
+            error: response.data["message"],
+            statusCode: response.statusCode.toString(),
+          ),
+        );
       }
     } on DioException catch (e) {
       return Left(

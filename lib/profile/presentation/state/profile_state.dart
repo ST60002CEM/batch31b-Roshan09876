@@ -1,20 +1,17 @@
 import 'package:job_finder/features/auth/domain/entity/auth_entity.dart';
 
-class AuthState {
+class ProfileState {
   final bool isLoading;
   final String? error;
-  final String? imageName;
   final bool? showMessage;
   final AuthEntity currentUser;
 
-  AuthState(
-      {required this.isLoading, this.error, this.imageName, this.showMessage, required this.currentUser});
+  ProfileState({required this.isLoading, this.error, this.showMessage, required this.currentUser});
 
-  factory AuthState.initial() {
-    return AuthState(
+  factory ProfileState.initial() {
+    return ProfileState(
       isLoading: false,
       error: null,
-      imageName: null,
       showMessage: false,
       currentUser: AuthEntity(
         firstName: "firstName", 
@@ -24,22 +21,19 @@ class AuthState {
     );
   }
 
-  AuthState copyWith({
+  ProfileState copyWith({
     bool? isLoading,
     String? error,
-    String?  imageName,
     bool? showMessage,
-    AuthEntity? currentUser
   }) {
-    return AuthState(
+    return ProfileState(
       isLoading: isLoading ?? this.isLoading,
       error: error ?? this.error,
-      imageName: imageName ?? this.imageName,
       showMessage: showMessage ?? this.showMessage,
       currentUser: currentUser ?? this.currentUser,
     );
   }
 
   @override
-  String toString() => 'AuthState(isLoading: $isLoading, error: $error, currentUser: $currentUser)';
+  String toString() => 'ProfileState(isLoading: $isLoading, error: $error, currentUser: $currentUser)';
 }

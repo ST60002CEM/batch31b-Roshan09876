@@ -39,10 +39,17 @@ class AuthApiModel {
         password: authEntity.password);
   }
 
+  AuthEntity toEntity() => AuthEntity(
+      freelancerId: freelancerId,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: password);
+
   //FromJSON
   factory AuthApiModel.fromJson(Map<String, dynamic> json) =>
       _$AuthApiModelFromJson(json);
 
-      //ToJSON
-    Map<String, dynamic> toJson() => _$AuthApiModelToJson(this);
+  //ToJSON
+  Map<String, dynamic> toJson() => _$AuthApiModelToJson(this);
 }

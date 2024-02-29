@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:job_finder/config/constant/app_constants.dart';
 import 'package:job_finder/config/constant/reusable_text.dart';
+import 'package:job_finder/features/auth/presentation/view_model/auth_view_model.dart';
 
-class ProfilePageView extends StatelessWidget {
-  const ProfilePageView({Key? key}) : super(key: key);
+class ProfilePageView extends ConsumerStatefulWidget {
+  const ProfilePageView({super.key});
 
   @override
+  ConsumerState<ConsumerStatefulWidget> createState() =>
+      _ProfilePageViewState();
+}
+
+class _ProfilePageViewState extends ConsumerState<ProfilePageView> {
+  @override
   Widget build(BuildContext context) {
+
+    var userState = ref.watch(authViewModelProvider);
+
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(kDark.value),
@@ -32,7 +44,8 @@ class ProfilePageView extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       radius: 50,
-                      backgroundImage: AssetImage('assets/profile_image.png'), // Add your profile image
+                      backgroundImage: AssetImage(
+                          'assets/profile_image.png'), // Add your profile image
                     ),
                     SizedBox(
                       width: 20,
@@ -41,18 +54,20 @@ class ProfilePageView extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         ReusableText(
-                          text: 'FirstName LastName', // Combine first name and last name
+                          text:
+                              userState.currentUser.firstName, // Combine first name and last name
                           fontSize: 20,
                           color: Color(kDark.value), // Make the name bold
                         ),
                         ReusableText(
-                          text: 'Professional Title', // Add a professional title
+                          text:
+                              'Professional Title', // Add a professional title
                           fontSize: 16,
                           color: Color(kDark.value),
                         ),
                         SizedBox(height: 5),
                         ReusableText(
-                          text: 'Location', // Add location
+                          text: userState.currentUser.lastName, // Add location
                           fontSize: 16,
                           color: Color(kDark.value),
                         ),
