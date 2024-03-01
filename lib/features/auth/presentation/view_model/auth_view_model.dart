@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:job_finder/config/common/snackbar/my_snackbar.dart';
 import 'package:job_finder/config/router/app_routes.dart';
+import 'package:job_finder/core/shared_pref/user_shared_pref.dart';
 import 'package:job_finder/features/auth/domain/entity/auth_entity.dart';
 import 'package:job_finder/features/auth/domain/usecases/login_usecase.dart';
 import 'package:job_finder/features/auth/domain/usecases/profile_usecase.dart';
@@ -13,14 +14,15 @@ import 'package:job_finder/features/auth/presentation/state/auth_state.dart';
 
 final authViewModelProvider = StateNotifierProvider<AuthViewModel, AuthState>(
     (ref) => AuthViewModel(ref.read(signUpUseCaseProvider),
-        ref.read(loginUseCaseProvider), ref.read(profileUseCaseProvider)));
+        ref.read(loginUseCaseProvider), ref.read(profileUseCaseProvider), ref.read(userSharedPrefsProvider)));
 
 class AuthViewModel extends StateNotifier<AuthState> {
   final SignUpUseCase signUpUseCase;
   final LoginUseCase loginUseCase;
   final ProfileUseCase profileUseCase;
+  final UserSharedPref _userSharedPref;
 
-  AuthViewModel(this.signUpUseCase, this.loginUseCase, this.profileUseCase)
+  AuthViewModel(this.signUpUseCase, this.loginUseCase, this.profileUseCase, this._userSharedPref)
       : super(AuthState.initial());
 
   Future<void> signUpFreelancer(
@@ -109,6 +111,25 @@ class AuthViewModel extends StateNotifier<AuthState> {
         state = state.copyWith(isLoading: false, error: null, currentUser: success);
       },
     );
+  }
+
+    void logout(BuildContext context) async {
+    // state = true;
+
+    showSnackBar(
+        message: 'Logging out....', context: context, color: Colors.red);
+
+    await _userSharedPref.deleteUserToken();
+
+    Future.delayed(const Duration(milliseconds: 2000), () {
+      // state = false;
+
+      Navigator.pushNamedAndRemoveUntil(
+        context,
+        AppRoute.loginviewRoute,
+        (route) => false,
+      );
+    });
   }
 
   void resetMessage() {

@@ -15,9 +15,7 @@ class ProfilePageView extends ConsumerStatefulWidget {
 class _ProfilePageViewState extends ConsumerState<ProfilePageView> {
   @override
   Widget build(BuildContext context) {
-
     var userState = ref.watch(authViewModelProvider);
-
 
     return Scaffold(
       appBar: AppBar(
@@ -42,11 +40,11 @@ class _ProfilePageViewState extends ConsumerState<ProfilePageView> {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    CircleAvatar(
-                      radius: 50,
-                      backgroundImage: AssetImage(
-                          'assets/profile_image.png'), // Add your profile image
-                    ),
+                    // CircleAvatar(
+                    //   radius: 50,
+                    //   backgroundImage: AssetImage(
+                    //       // 'assets/profile_image.png'), // Add your profile image
+                    // ),
                     SizedBox(
                       width: 20,
                     ),
@@ -54,8 +52,8 @@ class _ProfilePageViewState extends ConsumerState<ProfilePageView> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         ReusableText(
-                          text:
-                              userState.currentUser.firstName, // Combine first name and last name
+                          text: userState.currentUser
+                              .firstName, // Combine first name and last name
                           fontSize: 20,
                           color: Color(kDark.value), // Make the name bold
                         ),
@@ -114,6 +112,11 @@ class _ProfilePageViewState extends ConsumerState<ProfilePageView> {
                   fontSize: 16,
                   color: Color(kDark.value),
                 ),
+                IconButton(
+                    onPressed: () {
+                      ref.read(authViewModelProvider.notifier).logout(context);
+                    },
+                    icon: Icon(Icons.logout))
               ],
             ),
           ),

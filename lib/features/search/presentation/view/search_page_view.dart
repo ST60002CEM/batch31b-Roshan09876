@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:job_finder/config/constant/app_constants.dart';
 import 'package:job_finder/config/constant/reusable_text.dart';
+import 'package:job_finder/config/router/app_routes.dart';
+import 'package:job_finder/features/pagination/presentation/view/jobs_view_detail.dart';
+import 'package:job_finder/features/search/presentation/view/search_show.dart';
 import 'package:job_finder/features/search/presentation/view_model/search_view_model.dart';
 
 class SearchPageView extends ConsumerStatefulWidget {
@@ -12,11 +15,15 @@ class SearchPageView extends ConsumerStatefulWidget {
 }
 
 class _SearchPageViewState extends ConsumerState<SearchPageView> {
+
+  TextEditingController serachController = TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
     FocusNode _focusNode = FocusNode();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      ref.read(searchViewModelProvider.notifier).getSeacrhJobs("");
+      // ref.read(searchViewModelProvider.notifier).getSeacrhJobs("");
     });
     return Scaffold(
       appBar: AppBar(
@@ -34,17 +41,27 @@ class _SearchPageViewState extends ConsumerState<SearchPageView> {
           child: Column(
             children: [
               TextField(
+                controller: serachController,
                 focusNode: _focusNode,
-                onChanged: (value) {
-                  ref
-                      .read(searchViewModelProvider.notifier)
-                      .getSeacrhJobs(value);
-                },
+              
+                // onChanged: (value) {
+                //   ref
+                //       .read(searchViewModelProvider.notifier)
+                //       .getSeacrhJobs(value);
+                // },
                 decoration: InputDecoration(
                   hintText: 'Search',
-                  suffixIcon: Icon(
-                    Icons.search,
-                    color: Color(kOrange.value),
+                  suffixIcon: InkWell(
+                    onTap: (){
+                      print("CONTROLLER:::${serachController.text}");
+                      ref
+                      .read(searchViewModelProvider.notifier)
+                      .getSeacrhJobs(serachController.text);
+                    },
+                    child: Icon(
+                      Icons.search,
+                      color: Color(kOrange.value),
+                    ),
                   ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
@@ -55,7 +72,7 @@ class _SearchPageViewState extends ConsumerState<SearchPageView> {
                 child: Consumer(
                   builder: (context, watch, child) {
                     final state = ref.read(searchViewModelProvider);
-                    if (state.isLoading && state.page == 0) {
+                    if (state.isLoading) {
                       return Center(
                         child: CircularProgressIndicator(),
                       );
@@ -66,6 +83,14 @@ class _SearchPageViewState extends ConsumerState<SearchPageView> {
                         itemBuilder: (context, index) {
                           final job = state.searchApiModel[index];
                           return ListTile(
+                            onTap: () {
+                              // Navigator.pushNamed(
+                              //     context, AppRoute.searchShowScreen,
+                              //     arguments: state.searchApiModel[index]);
+                              print(state.searchApiModel[index]);
+
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>SearchShowScreen(jobs: state.searchApiModel[index])));
+                            },
                             title: Padding(
                                 padding: const EdgeInsets.only(bottom: 10),
                                 child: ReusableText(

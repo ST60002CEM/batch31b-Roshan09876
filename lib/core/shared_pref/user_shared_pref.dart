@@ -1,6 +1,11 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:job_finder/core/common/Failure.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+final userSharedPrefsProvider = Provider<UserSharedPref>((ref) {
+  return UserSharedPref();
+});
 
 class UserSharedPref {
   late SharedPreferences sharedPreferences;

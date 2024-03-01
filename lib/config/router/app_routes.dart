@@ -4,6 +4,7 @@ import 'package:job_finder/chat_view.dart';
 import 'package:job_finder/features/home/main_screen_view.dart';
 import 'package:job_finder/features/home/presentation/view/home_view.dart';
 import 'package:job_finder/features/pagination/presentation/view/jobs_view_detail.dart';
+import 'package:job_finder/features/search/presentation/view/search_show.dart';
 import 'package:job_finder/features/view/ui/screens/first_page.dart';
 import 'package:job_finder/features/splash/splash_screen.dart';
 
@@ -20,6 +21,7 @@ class AppRoute {
   static const String chatviewRoute = '/chatviewRoute';
   static const String profileviewRoute = '/profileviewRoute';
   static const String jobsviewDetail = '/jobsviewDetail';
+  // static const String searchShowScreen = '/searchShowScreen';
 
   static getApplicationRoute() {
     return {
@@ -31,6 +33,7 @@ class AppRoute {
       mainscreenRoute: (context) => MainScreenView(),
       chatviewRoute: (context) => ChatView(),
       jobsviewDetail: (context) => JobsViewDetail(),
+      // searchShowScreen: (context) => SearchShowScreen(),
     };
   }
 }
