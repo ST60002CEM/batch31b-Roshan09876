@@ -76,6 +76,7 @@ class AuthViewModel extends StateNotifier<AuthState> {
           showMessage: true,
           error: null,
         );
+        getUser(context, email);
         Navigator.popAndPushNamed(context, AppRoute.homeViewRoute);
       },
     );
@@ -105,7 +106,7 @@ class AuthViewModel extends StateNotifier<AuthState> {
         );
       },
       (success) {
-        state = state.copyWith(isLoading: false, error: null);
+        state = state.copyWith(isLoading: false, error: null, currentUser: success);
       },
     );
   }

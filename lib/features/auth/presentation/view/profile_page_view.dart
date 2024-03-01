@@ -84,7 +84,7 @@ class _ProfilePageViewState extends ConsumerState<ProfilePageView> {
                   color: Color(kDark.value),
                 ),
                 ReusableText(
-                  text: 'test@gmail.com',
+                  text: userState.currentUser.email,
                   fontSize: 16,
                   color: Color(kDark.value),
                 ),

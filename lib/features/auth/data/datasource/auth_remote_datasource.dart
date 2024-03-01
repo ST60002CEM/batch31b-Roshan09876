@@ -51,6 +51,7 @@ class AuthRemoteDataSource {
         //Retriving Token
         String token = response.data['token'];
         await UserSharedPref().setUserToken(token);
+        
 
         final storedToken = await UserSharedPref().setUserToken(token);
         print('Stored Token is: $storedToken');
@@ -70,12 +71,12 @@ class AuthRemoteDataSource {
     }
   }
 
-    Future<Either<Failure, AuthEntity>> getUser(String username) async {
+    Future<Either<Failure, AuthEntity>> getUser(String email) async {
     try {
       Response response = await dio.post(
         ApiEndpoints.userProfile,
         data: {
-          "username": username,
+          "email": email,
         },
       );
 
