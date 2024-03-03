@@ -21,12 +21,13 @@ class _SearchPageViewState extends ConsumerState<SearchPageView> {
 
   @override
   Widget build(BuildContext context) {
+    final state = ref.read(searchViewModelProvider);
     FocusNode _focusNode = FocusNode();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       // ref.read(searchViewModelProvider.notifier).getSeacrhJobs("");
     });
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBar( backgroundColor: Color(kDark.value),
         title: Text('Search'),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -71,7 +72,7 @@ class _SearchPageViewState extends ConsumerState<SearchPageView> {
               Expanded(
                 child: Consumer(
                   builder: (context, watch, child) {
-                    final state = ref.read(searchViewModelProvider);
+                    print("Build Lenght  ${state.searchApiModel.length}");
                     if (state.isLoading) {
                       return Center(
                         child: CircularProgressIndicator(),

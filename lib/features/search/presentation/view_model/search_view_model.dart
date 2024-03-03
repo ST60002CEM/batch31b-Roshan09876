@@ -26,16 +26,8 @@ class SearchViewModel extends StateNotifier<SearchState> {
       result.fold(
           (Failure) => state =
               state.copyWith(isLoading: true, hasReachedmax: false), (data) {
-                
-        // if (data.isEmpty) {
-        //   state = state.copyWith(hasReachedmax: true);
-        // } else {
-          //if (data.count > )
           state.copyWith(searchApiModel:[]);
-
-          // print("SEARCH DATA::${data}");
           jobs.clear();
-        
           List<SearchApiModel> allDataList = [...jobs, ...data];
           print("SEARCH DATA 12333::${allDataList}");
           state = state.copyWith(

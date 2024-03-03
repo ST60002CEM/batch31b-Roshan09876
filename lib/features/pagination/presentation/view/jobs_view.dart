@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get/route_manager.dart';
 import 'package:job_finder/config/constant/app_constants.dart';
 import 'package:job_finder/config/constant/reusable_text.dart';
 import 'package:job_finder/config/router/app_routes.dart';
@@ -27,7 +28,6 @@ class _JobsViewState extends ConsumerState<JobsView> {
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(jobViewModelProvider);
-
     return NotificationListener(
       onNotification: (notification) {
         if (notification is ScrollEndNotification) {
@@ -79,6 +79,11 @@ class _JobsViewState extends ConsumerState<JobsView> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               ListTile(
+                                onTap: () {
+                                  Navigator.pushNamed(
+                                      context, AppRoute.jobsviewDetail,
+                                      arguments: state.jobApiModel[index]);
+                                },
                                 // leading: Text(jobs.id.toString()),
                                 title: Padding(
                                     padding: const EdgeInsets.only(bottom: 10),

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:job_finder/chat_view.dart';
 import 'package:job_finder/config/constant/app_constants.dart';
 import 'package:job_finder/config/constant/reusable_text.dart';
 import 'package:job_finder/features/pagination/data/model/job_api_model.dart';
 import 'package:job_finder/features/pagination/presentation/view_model/job_view_model.dart';
+import 'package:job_finder/features/view/chat/chat_list.dart';
 
 class JobsViewDetail extends ConsumerStatefulWidget {
   const JobsViewDetail({Key? key}) : super(key: key);
@@ -13,11 +15,10 @@ class JobsViewDetail extends ConsumerStatefulWidget {
 }
 
 class _JobsViewDetailState extends ConsumerState<JobsViewDetail> {
-  
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(jobViewModelProvider);
-    var jobs  = ModalRoute.of(context)!.settings.arguments as JobApiModel;
+    var jobs = ModalRoute.of(context)!.settings.arguments as JobApiModel;
 
     return Scaffold(
       appBar: AppBar(
@@ -35,33 +36,38 @@ class _JobsViewDetailState extends ConsumerState<JobsViewDetail> {
         ],
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30), // Adjusted padding
+        padding: const EdgeInsets.symmetric(
+            horizontal: 20, vertical: 30), // Adjusted padding
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ReusableText(
-                text: '${jobs.title}', fontSize: 36, color: Color(kDark.value)), // Increased font size and added bold
+                text: '${jobs.title}',
+                fontSize: 36,
+                color:
+                    Color(kDark.value)), // Increased font size and added bold
             SizedBox(
               height: 10,
             ),
             ReusableText(
                 text: 'Job Description',
                 fontSize: 24, // Adjusted font size
-               // Added bold
+                // Added bold
                 color: Color(kDark.value)),
             SizedBox(
               height: 5,
             ),
             ReusableText(
-                text:
-                    '${jobs.description}',
+                text: '${jobs.description}',
                 fontSize: 16,
                 color: Color(kDark.value)),
             SizedBox(
               height: 20,
             ),
             ReusableText(
-                text: 'Salary', fontSize: 24, color: Color(kDark.value)), // Added bold
+                text: 'Salary',
+                fontSize: 24,
+                color: Color(kDark.value)), // Added bold
             SizedBox(
               height: 5,
             ),
@@ -73,21 +79,29 @@ class _JobsViewDetailState extends ConsumerState<JobsViewDetail> {
               height: 20,
             ),
             ReusableText(
-                text: 'Location', fontSize: 24, color: Color(kDark.value)), // Added bold
+                text: 'Location',
+                fontSize: 24,
+                color: Color(kDark.value)), // Added bold
             SizedBox(
               height: 5,
             ),
             ReusableText(
-                text: '${jobs.location}', fontSize: 16, color: Color(kOrange.value)),
+                text: '${jobs.location}',
+                fontSize: 16,
+                color: Color(kOrange.value)),
             SizedBox(
               height: 40,
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ChatListPage()));
+              },
               style: ElevatedButton.styleFrom(
-                primary: Color(kOrange.value),
+                backgroundColor: Color(kOrange.value),
                 padding: EdgeInsets.symmetric(vertical: 16),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)),
               ),
               child: SizedBox(
                 width: double.infinity,

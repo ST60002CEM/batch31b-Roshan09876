@@ -1,4 +1,5 @@
 import 'package:job_finder/features/auth/presentation/view/login_view.dart';
+import 'package:job_finder/features/auth/presentation/view/profile_page_view.dart';
 import 'package:job_finder/features/auth/presentation/view/register_view.dart';
 import 'package:job_finder/chat_view.dart';
 import 'package:job_finder/features/home/main_screen_view.dart';
@@ -33,6 +34,7 @@ class AppRoute {
       mainscreenRoute: (context) => MainScreenView(),
       chatviewRoute: (context) => ChatView(),
       jobsviewDetail: (context) => JobsViewDetail(),
+      profileviewRoute: (context) => ProfilePageView(),
       // searchShowScreen: (context) => SearchShowScreen(),
     };
   }
