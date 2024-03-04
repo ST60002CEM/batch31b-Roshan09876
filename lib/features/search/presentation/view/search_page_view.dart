@@ -2,32 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:job_finder/config/constant/app_constants.dart';
 import 'package:job_finder/config/constant/reusable_text.dart';
-import 'package:job_finder/config/router/app_routes.dart';
-import 'package:job_finder/features/pagination/presentation/view/jobs_view_detail.dart';
 import 'package:job_finder/features/search/presentation/view/search_show.dart';
 import 'package:job_finder/features/search/presentation/view_model/search_view_model.dart';
 
 class SearchPageView extends ConsumerStatefulWidget {
-  const SearchPageView({super.key});
+  const SearchPageView({Key? key}) : super(key: key);
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _SearchPageViewState();
+  _SearchPageViewState createState() => _SearchPageViewState();
 }
 
 class _SearchPageViewState extends ConsumerState<SearchPageView> {
-
   TextEditingController serachController = TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
-    final state = ref.read(searchViewModelProvider);
-    FocusNode _focusNode = FocusNode();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      // ref.read(searchViewModelProvider.notifier).getSeacrhJobs("");
-    });
+    final state = ref.watch(searchViewModelProvider);
+
     return Scaffold(
-      appBar: AppBar( backgroundColor: Color(kDark.value),
+      appBar: AppBar(
+        backgroundColor: Color(kDark.value),
         title: Text('Search'),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -43,26 +37,22 @@ class _SearchPageViewState extends ConsumerState<SearchPageView> {
             children: [
               TextField(
                 controller: serachController,
-                focusNode: _focusNode,
-              
-                // onChanged: (value) {
-                //   ref
-                //       .read(searchViewModelProvider.notifier)
-                //       .getSeacrhJobs(value);
-                // },
+                onSubmitted: (value) {
+                  // Trigger search when Enter key is pressed
+                    ref
+                        .read(searchViewModelProvider.notifier)
+                        .getSearchJobs(value);
+
+                },
                 decoration: InputDecoration(
                   hintText: 'Search',
-                  suffixIcon: InkWell(
-                    onTap: (){
-                      print("CONTROLLER:::${serachController.text}");
+                  suffixIcon: IconButton(
+                    icon: Icon(Icons.search),
+                    onPressed: () {
                       ref
-                      .read(searchViewModelProvider.notifier)
-                      .getSeacrhJobs(serachController.text);
+                          .read(searchViewModelProvider.notifier)
+                          .getSearchJobs(serachController.text);
                     },
-                    child: Icon(
-                      Icons.search,
-                      color: Color(kOrange.value),
-                    ),
                   ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
@@ -70,47 +60,49 @@ class _SearchPageViewState extends ConsumerState<SearchPageView> {
                 ),
               ),
               Expanded(
-                child: Consumer(
-                  builder: (context, watch, child) {
-                    print("Build Lenght  ${state.searchApiModel.length}");
-                    if (state.isLoading) {
-                      return Center(
+                child: state.isLoading
+                    ? Center(
                         child: CircularProgressIndicator(),
-                      );
-                    } else {
-                      return ListView.builder(
-                        itemCount: state.searchApiModel.length,
-                        // itemCount: 1,
-                        itemBuilder: (context, index) {
-                          final job = state.searchApiModel[index];
-                          return ListTile(
-                            onTap: () {
-                              // Navigator.pushNamed(
-                              //     context, AppRoute.searchShowScreen,
-                              //     arguments: state.searchApiModel[index]);
-                              print(state.searchApiModel[index]);
-
-                              Navigator.push(context, MaterialPageRoute(builder: (context)=>SearchShowScreen(jobs: state.searchApiModel[index])));
-                            },
-                            title: Padding(
-                                padding: const EdgeInsets.only(bottom: 10),
-                                child: ReusableText(
+                      )
+                    : state.searchApiModel.isEmpty
+                        ? Center(
+                            child: Text('No results found.'),
+                          )
+                        : ListView.builder(
+                            itemCount: state.searchApiModel.length,
+                            itemBuilder: (context, index) {
+                              final job = state.searchApiModel[index];
+                              return ListTile(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          SearchShowScreen(jobs: job),
+                                    ),
+                                  );
+                                },
+                                title: Padding(
+                                  padding: const EdgeInsets.only(bottom: 10),
+                                  child: ReusableText(
                                     text: job.title,
                                     fontSize: 25,
-                                    color: Color(kDark.value))),
-                            subtitle: Text(job.description.length > 100
-                                ? '${job.description.substring(0, 150)}...'
-                                : job.description),
-                            trailing: ReusableText(
-                                text: job.salary,
-                                fontSize: 15,
-                                color: Color(kOrange.value)),
-                          );
-                        },
-                      );
-                    }
-                  },
-                ),
+                                    color: Color(kDark.value),
+                                  ),
+                                ),
+                                subtitle: Text(
+                                  job.description.length > 100
+                                      ? '${job.description.substring(0, 150)}...'
+                                      : job.description,
+                                ),
+                                trailing: ReusableText(
+                                  text: job.salary,
+                                  fontSize: 15,
+                                  color: Color(kOrange.value),
+                                ),
+                              );
+                            },
+                          ),
               ),
             ],
           ),

@@ -2,6 +2,7 @@ import 'package:job_finder/features/auth/presentation/view/login_view.dart';
 import 'package:job_finder/features/auth/presentation/view/profile_page_view.dart';
 import 'package:job_finder/features/auth/presentation/view/register_view.dart';
 import 'package:job_finder/chat_view.dart';
+import 'package:job_finder/features/bookmarks/presentation/view/bookmarks_page.dart';
 import 'package:job_finder/features/home/main_screen_view.dart';
 import 'package:job_finder/features/home/presentation/view/home_view.dart';
 import 'package:job_finder/features/pagination/presentation/view/jobs_view_detail.dart';
@@ -22,6 +23,7 @@ class AppRoute {
   static const String chatviewRoute = '/chatviewRoute';
   static const String profileviewRoute = '/profileviewRoute';
   static const String jobsviewDetail = '/jobsviewDetail';
+  static const String bookmarkView = '/bookmarkView';
   // static const String searchShowScreen = '/searchShowScreen';
 
   static getApplicationRoute() {
@@ -35,6 +37,7 @@ class AppRoute {
       chatviewRoute: (context) => ChatView(),
       jobsviewDetail: (context) => JobsViewDetail(),
       profileviewRoute: (context) => ProfilePageView(),
+      bookmarkView: (context) => BookMarksPage(),
       // searchShowScreen: (context) => SearchShowScreen(),
     };
   }

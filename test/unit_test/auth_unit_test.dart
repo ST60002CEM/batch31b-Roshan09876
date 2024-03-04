@@ -2,6 +2,7 @@
 // import 'package:flutter/material.dart';
 // import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import 'package:job_finder/features/auth/domain/usecases/login_usecase.dart';
+// import 'package:job_finder/features/auth/domain/usecases/profile_usecase.dart';
 // import 'package:job_finder/features/auth/domain/usecases/signup_usecase.dart';
 // import 'package:job_finder/features/auth/presentation/view_model/auth_view_model.dart';
 // import 'package:mockito/annotations.dart';
@@ -22,6 +23,7 @@
 // void main() {
 //   late SignUpUseCase mockSignUpUseCase;
 //   late LoginUseCase mockLoginUseCase;
+//   final ProfileUseCase mockProfileuseCase;
 //   late ProviderContainer container;
 //   late BuildContext context;
 

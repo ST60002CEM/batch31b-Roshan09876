@@ -30,13 +30,37 @@ class AuthViewModel extends StateNotifier<AuthState> {
     state = state.copyWith(isLoading: true);
     final result = await signUpUseCase.signUpFreelancer(authEntity);
     state = state.copyWith(isLoading: false);
-    result.fold(
-      (failure) => state = state.copyWith(
-        error: failure.error,
-        showMessage: true,
-      ),
+       result.fold(
+      (failure) {
+        state = state.copyWith(
+          error: failure.error,
+          showMessage: true,
+        );
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: Colors.red, // Background color of the snackbar
+            content: Text(
+              failure.error, // Display the error message from the backend
+              style: TextStyle(color: Colors.white), // Text color
+            ),
+            duration: Duration(seconds: 3), // Duration to display the snackbar
+            behavior: SnackBarBehavior
+                .floating, // Make the snackbar float above the bottom navigation bar
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(10)), // Rounded corners
+            ),
+          ),
+        );
+      },
       (success) {
-        state = state.copyWith(isLoading: false, showMessage: true);
+        state = state.copyWith(
+          isLoading: false,
+          showMessage: true,
+          error: null,
+        );
+        // getUser(context, email);
         Navigator.popAndPushNamed(context, AppRoute.loginviewRoute);
       },
     );

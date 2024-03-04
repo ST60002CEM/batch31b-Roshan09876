@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:job_finder/chat_view.dart';
 import 'package:job_finder/config/constant/app_constants.dart';
 import 'package:job_finder/config/constant/reusable_text.dart';
+import 'package:job_finder/config/router/app_routes.dart';
 import 'package:job_finder/features/pagination/data/model/job_api_model.dart';
 import 'package:job_finder/features/pagination/presentation/view_model/job_view_model.dart';
 import 'package:job_finder/features/view/chat/chat_list.dart';
@@ -17,9 +17,8 @@ class JobsViewDetail extends ConsumerStatefulWidget {
 class _JobsViewDetailState extends ConsumerState<JobsViewDetail> {
   @override
   Widget build(BuildContext context) {
-    final state = ref.watch(jobViewModelProvider);
     var jobs = ModalRoute.of(context)!.settings.arguments as JobApiModel;
-
+    final state = ref.watch(jobViewModelProvider);
     return Scaffold(
       appBar: AppBar(
         title: ReusableText(
@@ -31,7 +30,12 @@ class _JobsViewDetailState extends ConsumerState<JobsViewDetail> {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20),
-            child: Icon(Icons.bookmark),
+            child: IconButton(
+              onPressed: () {
+                // Navigator.pushNamed(context, AppRoute.bookmarkView, arguments: state.jobApiModel[id]);
+              },
+              icon: Icon(Icons.bookmark),
+            ),
           )
         ],
       ),
