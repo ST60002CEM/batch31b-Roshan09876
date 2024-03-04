@@ -18,7 +18,7 @@ class _AppliesJobsState extends ConsumerState<AppliesJobs> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       final userSharedPref = ref.read(userSharedPrefsProvider);
-      userSharedPref.getUserToken().then((value) => value.fold((l) => null, (r) {
+      userSharedPref.getUserId().then((value) => value.fold((l) => null, (r) {
       ref.read(jobViewModelProvider.notifier).getAppliedJobs(r!);
 
       }));

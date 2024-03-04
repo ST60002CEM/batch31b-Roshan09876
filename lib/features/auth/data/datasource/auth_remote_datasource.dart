@@ -10,11 +10,15 @@ import 'package:job_finder/features/auth/domain/entity/auth_entity.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final authRemoteDataSourceProvider = Provider<AuthRemoteDataSource>(
-    (ref) => AuthRemoteDataSource(ref.read(httpServiceProvider)));
+    (ref) => AuthRemoteDataSource(
+      dio: ref.read(httpServiceProvider),
+      userSharedPref: ref.read(userSharedPrefsProvider),
+    ));
 
 class AuthRemoteDataSource {
   final Dio dio;
-  AuthRemoteDataSource(this.dio);
+  final UserSharedPref userSharedPref;
+  AuthRemoteDataSource({required this.dio, required this.userSharedPref});
 
   // Converts an AuthEntity to an AuthApiModel before making the HTTP request.
 
@@ -50,11 +54,11 @@ class AuthRemoteDataSource {
       if (response.statusCode == 200) {
         //Retriving Token
         String token = response.data['token'];
-        // await UserSharedPref().setUserToken(token);
-
-        final storedToken = await UserSharedPref().setUserToken(token);
+        final storedToken = await userSharedPref.setUserToken(token);
+        final storeUser = await userSharedPref.setUserId(response.data['user']['_id']);
         print('Stored Token is: $storedToken');
-        return const Right(true);
+        print('Stored user is: $storeUser');
+        return Right(true);
       } else {
         return Left(Failure(
             error: response.data['message'],

@@ -42,4 +42,24 @@ class UserSharedPref {
       return Left(Failure(error: e.toString()));
     }
   }
+
+    Future<Either<Failure, String?>> getUserId() async {
+    try {
+      sharedPreferences = await SharedPreferences.getInstance();
+      final token = sharedPreferences.getString('userId');
+      return right(token);
+    } catch (e) {
+      return left(Failure(error: e.toString()));
+    }
+  }
+
+  Future<Either<Failure, bool>> setUserId(String userId) async {
+    try {
+      sharedPreferences = await SharedPreferences.getInstance();
+      await sharedPreferences.setString('userId', userId);
+      return right(true);
+    } catch (e) {
+      return left(Failure(error: e.toString()));
+    }
+  }
 }
