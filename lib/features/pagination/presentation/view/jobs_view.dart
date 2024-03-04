@@ -88,14 +88,14 @@ class _JobsViewState extends ConsumerState<JobsView> {
                                 title: Padding(
                                     padding: const EdgeInsets.only(bottom: 10),
                                     child: ReusableText(
-                                        text: jobs.title,
+                                        text: jobs.title.toString(),
                                         fontSize: 25,
                                         color: Color(kDark.value))),
-                                subtitle: Text(jobs.description.length > 100
-                                    ? '${jobs.description.substring(0, 150)}...'
-                                    : jobs.description),
+                                subtitle: Text(jobs.description!.length > 100
+                                    ? '${jobs.description!.substring(0, 150)}...'
+                                    : jobs.description.toString()),
                                 trailing: ReusableText(
-                                    text: jobs.salary,
+                                    text: jobs.salary.toString(),
                                     fontSize: 15,
                                     color: Color(kOrange.value)),
                                 shape: RoundedRectangleBorder(

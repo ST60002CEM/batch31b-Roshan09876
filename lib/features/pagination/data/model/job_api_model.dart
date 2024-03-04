@@ -7,13 +7,13 @@ part 'job_api_model.g.dart';
 @JsonSerializable()
 class JobApiModel extends Equatable {
   @JsonKey(name: '_id')
-  final String id;
-  final String title;
-  final String description;
-  final String salary;
-  final String location;
-  final bool availabe;
-  final String jobType;
+  final String? id;
+  final String? title;
+  final String? description;
+  final String? salary;
+  final String? location;
+  final bool? available;
+  final String? jobType;
 
   JobApiModel(
       {required this.id,
@@ -21,7 +21,7 @@ class JobApiModel extends Equatable {
       required this.description,
       required this.salary,
       required this.location,
-      required this.availabe,
+      required this.available,
       required this.jobType});
 
   //toEntity
@@ -32,7 +32,7 @@ class JobApiModel extends Equatable {
         description: jobApiModel.description,
         salary: jobApiModel.salary,
         location: jobApiModel.location,
-        availabe: jobApiModel.availabe,
+        available: jobApiModel.available,
         jobType: jobApiModel.jobType);
   }
 
@@ -44,7 +44,7 @@ class JobApiModel extends Equatable {
         description: jobEntity.description,
         salary: jobEntity.salary,
         location: jobEntity.location,
-        availabe: jobEntity.availabe,
+        available: jobEntity.available,
         jobType: jobEntity.jobType);
   }
 
@@ -57,5 +57,5 @@ class JobApiModel extends Equatable {
 
   @override
   List<Object?> get props =>
-      [id, title, description, salary, location, availabe, jobType];
+      [id, title, description, salary, location, available, jobType];
 }

@@ -73,3 +73,27 @@ class JobViewModel extends StateNotifier<JobState> {
     getJobs();
   }
 }
+
+
+
+//   Future getAppliedJobs(String userId) async {
+//   state = state.copyWith(isLoading: true);
+//   final currentState = state;
+//   final page = currentState.page + 1;
+//   final jobs = currentState.jobApiModel;
+//   final result = await jobUseCase.getAppliedJobs(userId); // Pass userId to the use case method
+//   result.fold(
+//     (failure) => state = state.copyWith(isLoading: false), // Handle failure case
+//     (data) {
+//       if (data.isEmpty) {
+//         state = state.copyWith(hasReachedmax: true);
+//       } else {
+//         state = state.copyWith(
+//           jobApiModel: [...jobs, ...data],
+//           page: page,
+//           isLoading: false,
+//         );
+//       }
+//     },
+//   );
+// }

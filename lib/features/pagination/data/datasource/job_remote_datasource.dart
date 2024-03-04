@@ -71,9 +71,10 @@ class JobRemoteDataSource {
           .get(ApiEndpoints.getuserjobs.replaceFirst(':id', userId.toString()));
       print(response.data);
       print(response);
-      final List<dynamic> data = response.data['showJob'];
-      final post = data.map((json) => JobApiModel.fromJson(json)).toList();
-      return Right(post);
+      final List<dynamic> data = response.data['jobHistory'];
+      // final post = data.map((json) => JobApiModel.fromJson(json)).toList();
+         final List<JobApiModel> jobList = data.map((json) => JobApiModel.fromJson(json)).toList();
+      return Right(jobList);
     } on DioException catch (e) {
       return Left(Failure(error: e.message.toString()));
     }

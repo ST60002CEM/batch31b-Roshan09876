@@ -49,7 +49,7 @@ class UserSharedPref {
       final token = sharedPreferences.getString('userId');
       return right(token);
     } catch (e) {
-      return left(Failure(error: e.toString()));
+      return Left(Failure(error: e.toString()));
     }
   }
 
@@ -57,9 +57,9 @@ class UserSharedPref {
     try {
       sharedPreferences = await SharedPreferences.getInstance();
       await sharedPreferences.setString('userId', userId);
-      return right(true);
+      return Right(true);
     } catch (e) {
-      return left(Failure(error: e.toString()));
+      return Left(Failure(error: e.toString()));
     }
   }
 }

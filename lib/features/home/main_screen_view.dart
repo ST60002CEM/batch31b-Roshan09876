@@ -135,7 +135,7 @@ class _MainScreenViewState extends ConsumerState<MainScreenView> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  jobs.title,
+                                  jobs.title.toString(),
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 18.0,
@@ -143,15 +143,15 @@ class _MainScreenViewState extends ConsumerState<MainScreenView> {
                                 ),
                                 SizedBox(height: 8.0),
                                 Text(
-                                  jobs.description.length > 100
-                                      ? '${jobs.description.substring(0, 100)}...'
-                                      : jobs.description,
+                                  jobs.description!.length > 100
+                                      ? '${jobs.description!.substring(0, 100)}...'
+                                      : jobs.description.toString(),
                                   maxLines: 2,
                                   overflow: TextOverflow.ellipsis,
                                 ),
                                 SizedBox(height: 8.0),
                                 Text(
-                                  jobs.salary,
+                                  jobs.salary.toString(),
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16.0,
