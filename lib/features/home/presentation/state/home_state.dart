@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:job_finder/chat_view.dart';
 import 'package:job_finder/features/bookmarks/presentation/view/bookmarks_page.dart';
+import 'package:job_finder/features/pagination/presentation/view/applied_jobs.dart';
 import 'package:job_finder/features/view/chat/chat_list.dart';
 import 'package:job_finder/features/auth/presentation/view/profile_page_view.dart';
 import 'package:job_finder/features/home/main_screen_view.dart';
@@ -18,7 +20,8 @@ class HomeState {
     return HomeState(lstWidget: [
       MainScreenView(),
       BookMarksPage(),
-      ChatListPage(),
+      AppliesJobs(),
+      // ChatListPage(),
       // ChatView(),
       ProfilePageView(),
     ], index: 0);

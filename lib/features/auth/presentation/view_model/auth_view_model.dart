@@ -81,17 +81,17 @@ class AuthViewModel extends StateNotifier<AuthState> {
 
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            backgroundColor: Colors.red, // Background color of the snackbar
+            backgroundColor: Colors.red, 
             content: Text(
-              failure.error, // Display the error message from the backend
-              style: TextStyle(color: Colors.white), // Text color
+              failure.error, 
+              style: TextStyle(color: Colors.white), 
             ),
-            duration: Duration(seconds: 3), // Duration to display the snackbar
+            duration: Duration(seconds: 3), 
             behavior: SnackBarBehavior
-                .floating, // Make the snackbar float above the bottom navigation bar
+                .floating, 
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(10)), // Rounded corners
+                  top: Radius.circular(10)), 
             ),
           ),
         );
@@ -102,6 +102,7 @@ class AuthViewModel extends StateNotifier<AuthState> {
           showMessage: true,
           error: null,
         );
+        // _userSharedPref.setUserToken()
         getUser(context, email);
         Navigator.popAndPushNamed(context, AppRoute.homeViewRoute);
       },

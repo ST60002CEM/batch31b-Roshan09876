@@ -50,8 +50,7 @@ class AuthRemoteDataSource {
       if (response.statusCode == 200) {
         //Retriving Token
         String token = response.data['token'];
-        await UserSharedPref().setUserToken(token);
-        
+        // await UserSharedPref().setUserToken(token);
 
         final storedToken = await UserSharedPref().setUserToken(token);
         print('Stored Token is: $storedToken');

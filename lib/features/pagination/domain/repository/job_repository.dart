@@ -9,4 +9,6 @@ final jobRepositoryProvider =
 
 abstract class JobRepository {
   Future<Either<Failure, List<JobApiModel>>> getjobs(int page);
+  Future<Either<Failure, bool>> applyJobs(JobApiModel jobApiModel);
+  Future<Either<Failure, List<JobApiModel>>> getuserjobs(String userId);
 }

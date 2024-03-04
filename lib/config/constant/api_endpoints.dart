@@ -18,5 +18,6 @@ class ApiEndpoints{
   static const String searchJob = '/jobs/show';
   static const String userProfile = '/profile';
   static const String applyJobs = '/user/jobHistory';
+  static const String getuserjobs = '/user/jobHistory/:id';
   
 }
