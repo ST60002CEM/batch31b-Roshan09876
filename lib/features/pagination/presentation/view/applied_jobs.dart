@@ -55,6 +55,8 @@ class _AppliesJobsState extends ConsumerState<AppliesJobs> {
   }
 
   Widget _buildJobList(JobState state) {
+    // final appliedJobs = state.jobApiModel.where((job) => job.isApplied).toList();
+
     return ListView.builder(
       itemCount: state.jobApiModel.length,
       itemBuilder: (context, index) {
@@ -96,18 +98,12 @@ class _AppliesJobsState extends ConsumerState<AppliesJobs> {
                     width: double.infinity,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(kOrange.value),
+                        backgroundColor: Colors.green
                       ),
                       onPressed: () {
-                        // Navigate to job detail page
-                        // Navigator.pushNamed(
-                        //   context,
-                        //   AppRoute.jobsviewDetail,
-                        //   arguments: job,
-                        // );
                       },
                       child: Text(
-                        'View Details',
+                        'Applied Jobs',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 15,

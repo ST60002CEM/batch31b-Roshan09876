@@ -13,6 +13,8 @@ class JobsViewDetail extends ConsumerStatefulWidget {
 }
 
 class _JobsViewDetailState extends ConsumerState<JobsViewDetail> {
+  bool isApplied = false;
+
   @override
   Widget build(BuildContext context) {
     var jobs = ModalRoute.of(context)!.settings.arguments as JobApiModel;
@@ -95,19 +97,24 @@ class _JobsViewDetailState extends ConsumerState<JobsViewDetail> {
             ),
             ElevatedButton(
               onPressed: () {
-                ref.read(jobViewModelProvider.notifier).applyJob(jobs);
+                setState(() {
+                  isApplied = true;
+                });
+                ref.read(jobViewModelProvider.notifier).applyJob(context, jobs);
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color(kOrange.value),
+                backgroundColor:
+                    isApplied ? Colors.green : Color(kOrange.value),
                 padding: EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8)),
+                  borderRadius: BorderRadius.circular(8),
+                ),
               ),
               child: SizedBox(
                 width: double.infinity,
                 child: Center(
                   child: Text(
-                    'Apply Now',
+                    isApplied ? 'Applied' : 'Apply Now',
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:job_finder/features/pagination/data/model/job_api_model.dart';
 import 'package:job_finder/features/pagination/domain/usecase/get_applied_job_usecase.dart';
@@ -18,7 +19,8 @@ class JobViewModel extends StateNotifier<JobState> {
   final GetJobuseCase getJobuseCase;
   final JobUseCase jobUseCase;
   final GetAppliedJobUseCase getAppliedJobUseCase;
-  JobViewModel(this.jobUseCase, this.getJobuseCase, this.getAppliedJobUseCase) : super(JobState.initial());
+  JobViewModel(this.jobUseCase, this.getJobuseCase, this.getAppliedJobUseCase)
+      : super(JobState.initial());
 
   Future getJobs() async {
     state = state.copyWith(isLoading: true);
@@ -44,13 +46,62 @@ class JobViewModel extends StateNotifier<JobState> {
     }
   }
 
-  Future applyJob(JobApiModel jobApiModel) async {
+  // Future applyJob(JobApiModel jobApiModel) async {
+  //   state = state.copyWith(applyLoading: true);
+  //   final result = await getAppliedJobUseCase.applyJobs(jobApiModel);
+  //   result.fold((Failure) => state = state.copyWith(applyLoading: false),
+  //       (data) {
+  //     state = state.copyWith(applyLoading: true);
+  //   });
+  // }
+
+  Future<void> applyJob(BuildContext context, JobApiModel jobApiModel) async {
     state = state.copyWith(applyLoading: true);
     final result = await getAppliedJobUseCase.applyJobs(jobApiModel);
-    result.fold((Failure) => state = state.copyWith(applyLoading: false),
-        (data) {
-      state = state.copyWith(applyLoading: true);
-    });
+
+    result.fold(
+      (failure) {
+        state = state.copyWith(applyLoading: false);
+
+        // Show SnackBar for failure
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: Colors.red,
+            content: Text(
+              "Failed to apply for the job: ${failure.error}",
+              style: TextStyle(color: Colors.white),
+            ),
+            duration: Duration(seconds: 3),
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+            ),
+          ),
+        );
+      },
+      (data) {
+        state = state.copyWith(applyLoading: false);
+
+        // Show SnackBar for success
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: Colors.green,
+            content: Text(
+              "Applied for this job successfully!",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18),
+            ),
+            duration: Duration(seconds: 4),
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+            ),
+          ),
+        );
+      },
+    );
   }
 
   Future getAppliedJobs(String userId) async {
@@ -79,27 +130,3 @@ class JobViewModel extends StateNotifier<JobState> {
     getJobs();
   }
 }
-
-
-
-//   Future getAppliedJobs(String userId) async {
-//   state = state.copyWith(isLoading: true);
-//   final currentState = state;
-//   final page = currentState.page + 1;
-//   final jobs = currentState.jobApiModel;
-//   final result = await jobUseCase.getAppliedJobs(userId); // Pass userId to the use case method
-//   result.fold(
-//     (failure) => state = state.copyWith(isLoading: false), // Handle failure case
-//     (data) {
-//       if (data.isEmpty) {
-//         state = state.copyWith(hasReachedmax: true);
-//       } else {
-//         state = state.copyWith(
-//           jobApiModel: [...jobs, ...data],
-//           page: page,
-//           isLoading: false,
-//         );
-//       }
-//     },
-//   );
-// }

@@ -1,6 +1,4 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:job_finder/config/common/snackbar/my_snackbar.dart';
 import 'package:job_finder/config/router/app_routes.dart';
@@ -20,15 +18,18 @@ class AuthViewModel extends StateNotifier<AuthState> {
   final LoginUseCase loginUseCase;
   final ProfileUseCase profileUseCase;
 
-  AuthViewModel(this.signUpUseCase, this.loginUseCase, this.profileUseCase,)
-      : super(AuthState.initial());
+  AuthViewModel(
+    this.signUpUseCase,
+    this.loginUseCase,
+    this.profileUseCase,
+  ) : super(AuthState.initial());
 
   Future<void> signUpFreelancer(
       AuthEntity authEntity, BuildContext context) async {
     state = state.copyWith(isLoading: true);
     final result = await signUpUseCase.signUpFreelancer(authEntity);
     state = state.copyWith(isLoading: false);
-       result.fold(
+    result.fold(
       (failure) {
         state = state.copyWith(
           error: failure.error,
@@ -37,10 +38,10 @@ class AuthViewModel extends StateNotifier<AuthState> {
 
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            backgroundColor: Colors.red, // Background color of the snackbar
+            backgroundColor: Colors.blue, // Background color of the snackbar
             content: Text(
               failure.error, // Display the error message from the backend
-              style: TextStyle(color: Colors.white), // Text color
+              style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold, fontSize: 16), // Text color
             ),
             duration: Duration(seconds: 3), // Duration to display the snackbar
             behavior: SnackBarBehavior
@@ -79,17 +80,15 @@ class AuthViewModel extends StateNotifier<AuthState> {
 
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            backgroundColor: Colors.blue, 
+            backgroundColor: Colors.green,
             content: Text(
-              failure.error, 
-              style: TextStyle(color: Colors.white), 
+              failure.error,
+              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
             ),
-            duration: Duration(seconds: 3), 
-            behavior: SnackBarBehavior
-                .floating, 
+            duration: Duration(seconds: 3),
+            behavior: SnackBarBehavior.floating,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.vertical(
-                  top: Radius.circular(10)), 
+              borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
             ),
           ),
         );
@@ -100,7 +99,22 @@ class AuthViewModel extends StateNotifier<AuthState> {
           showMessage: true,
           error: null,
         );
-        // _userSharedPref.setUserToken()
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            backgroundColor: Colors.green, // Change color as per your design
+            content: Text(
+              "Successfully Logged in",
+              style: TextStyle(color: Colors.white),
+            ),
+            duration: Duration(seconds: 3),
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(10)),
+            ),
+          ),
+        );
+
         getUser(context, email);
         Navigator.popAndPushNamed(context, AppRoute.homeViewRoute);
       },
@@ -131,12 +145,13 @@ class AuthViewModel extends StateNotifier<AuthState> {
         );
       },
       (success) {
-        state = state.copyWith(isLoading: false, error: null, currentUser: success);
+        state =
+            state.copyWith(isLoading: false, error: null, currentUser: success);
       },
     );
   }
 
-    void logout(BuildContext context) async {
+  void logout(BuildContext context) async {
     // state = true;
 
     showSnackBar(
