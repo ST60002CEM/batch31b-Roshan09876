@@ -38,10 +38,10 @@ class AuthViewModel extends StateNotifier<AuthState> {
 
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            backgroundColor: Colors.blue, // Background color of the snackbar
+            backgroundColor: Colors.green, // Background color of the snackbar
             content: Text(
               failure.error, // Display the error message from the backend
-              style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold, fontSize: 16), // Text color
+              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16), // Text color
             ),
             duration: Duration(seconds: 3), // Duration to display the snackbar
             behavior: SnackBarBehavior
