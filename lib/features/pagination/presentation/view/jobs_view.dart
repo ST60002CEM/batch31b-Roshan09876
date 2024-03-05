@@ -41,21 +41,6 @@ class _JobsViewState extends ConsumerState<JobsView> {
         appBar: AppBar(
           title: Text('Jobs'),
           backgroundColor: Colors.black,
-          actions: [
-            TextButton.icon(
-              onPressed: () {
-                ref.read(jobViewModelProvider.notifier).resetState();
-              },
-              icon: const Icon(
-                Icons.refresh,
-                color: Colors.white,
-              ),
-              label: const Text(
-                'Refresh',
-                style: TextStyle(color: Colors.white),
-              ),
-            ),
-          ],
         ),
         body: RefreshIndicator(
           onRefresh: () async {

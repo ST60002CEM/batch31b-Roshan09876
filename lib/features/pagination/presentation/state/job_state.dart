@@ -7,35 +7,32 @@ class JobState {
   final bool isLoading;
   final bool applyLoading;
 
-  JobState({
-    required this.jobApiModel,
-    required this.hasReachedmax,
-    required this.page,
-    required this.isLoading,
-    required this.applyLoading,
-  });
+  JobState(
+      {required this.jobApiModel,
+      required this.hasReachedmax,
+      required this.page,
+      required this.isLoading, 
+      required this.applyLoading, 
+      });
 
   factory JobState.initial() {
     return JobState(
-        jobApiModel: [],
-        hasReachedmax: false,
-        page: 0,
-        isLoading: false,
-        applyLoading: false);
+        jobApiModel: [], hasReachedmax: false, page: 0, isLoading: false, applyLoading: false);
   }
 
-  JobState copyWith(
-      {List<JobApiModel>? jobApiModel,
-      bool? hasReachedmax,
-      int? page,
-      bool? isLoading,
-      bool? applyLoading}) {
+  JobState copyWith({
+    List<JobApiModel>? jobApiModel,
+    bool? hasReachedmax,
+    int? page,
+    bool? isLoading,
+    bool? applyLoading,
+  }) {
     return JobState(
-      jobApiModel: jobApiModel ?? this.jobApiModel,
-      hasReachedmax: hasReachedmax ?? this.hasReachedmax,
-      page: page ?? this.page,
-      isLoading: isLoading ?? this.isLoading,
-      applyLoading: applyLoading ?? this.applyLoading,
-    );
+        jobApiModel: jobApiModel ?? this.jobApiModel,
+        hasReachedmax: hasReachedmax ?? this.hasReachedmax,
+        page: page ?? this.page,
+        isLoading: isLoading ?? this.isLoading, 
+        applyLoading: applyLoading ?? this.applyLoading, 
+        );
   }
 }

@@ -26,22 +26,22 @@ class _ProximityState extends State<Proximity> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
+      appBar: AppBar(title: Text(
           'Proximity',
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
         ),
       ),
       body: Center(
-          child: _proximityValue >= 3
-              ? Text(
-                  'Object is Far',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                )
-              : Text(
-                  'Object is Near',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                )),
+        child: _proximityValue >= 3
+            ? Text(
+                'Object is Far',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              )
+            : Text(
+                'Object is Near',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+      ),
     );
   }
 }

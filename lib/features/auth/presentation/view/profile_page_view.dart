@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:all_sensors2/all_sensors2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:job_finder/config/constant/app_constants.dart';
@@ -12,6 +15,40 @@ class ProfilePageView extends ConsumerStatefulWidget {
 }
 
 class _ProfilePageViewState extends ConsumerState<ProfilePageView> {
+  final List<StreamSubscription<dynamic>> _streamSubscriptions =
+      <StreamSubscription<dynamic>>[];
+
+  final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
+  double _proximityValue = 0;
+  
+
+  @override
+  void initState() {
+    super.initState();
+   
+    _streamSubscriptions.add(
+      proximityEvents!.listen((ProximityEvent event) {
+        setState(() {
+          _proximityValue = event.proximity;
+        });
+
+        // Check for a double tap on proximity
+        if (_proximityValue == 0) {
+          // Trigger logout when double-tapped
+          _showLogoutConfirmation();
+        }
+      }),
+    );
+  }
+
+  @override
+  void dispose() {
+    for (var subscription in _streamSubscriptions) {
+      subscription.cancel();
+      
+    }
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     var userState = ref.watch(authViewModelProvider);
@@ -53,7 +90,7 @@ class _ProfilePageViewState extends ConsumerState<ProfilePageView> {
                         backgroundColor: Colors.black,
                       ),
                       SizedBox(
-                        width: 20,
+                        width: 10,
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,7 +98,7 @@ class _ProfilePageViewState extends ConsumerState<ProfilePageView> {
                           ReusableText(
                             text:
                                 '${userState.currentUser.firstName} ${userState.currentUser.lastName}',
-                            fontSize: 24,
+                            fontSize: 22,
                             color: Color(kDark.value),
                             // fontWeight: FontWeight.bold, // Make the name bold
                           ),
@@ -74,7 +111,7 @@ class _ProfilePageViewState extends ConsumerState<ProfilePageView> {
                             color: Color(kDark.value),
                           ),
                           ReusableText(
-                            text: 'Your Location',
+                            text: userState.currentUser.location,
                             fontSize: 16,
                             color: Color(kDark.value),
                           ),
@@ -104,7 +141,7 @@ class _ProfilePageViewState extends ConsumerState<ProfilePageView> {
                     color: Color(kDark.value),
                   ),
                   ReusableText(
-                    text: '980124629',
+                    text: userState.currentUser.phoneNum,
                     fontSize: 16,
                     color: Color(kDark.value),
                   ),
@@ -115,7 +152,7 @@ class _ProfilePageViewState extends ConsumerState<ProfilePageView> {
                     width: double.infinity,
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: Color(kOrange.value),
+                        backgroundColor: Color(kOrange.value),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8.0),
                         ),
@@ -147,6 +184,31 @@ class _ProfilePageViewState extends ConsumerState<ProfilePageView> {
               ),
             ),
           )
+    );
+  }
+  void _showLogoutConfirmation() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Logout Confirmation'),
+          content: const Text('Do you want to logout?'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: const Text('No'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, '/login');
+              },
+              child: const Text('Yes'),
+            ),
+          ],
+        );
+      },
     );
   }
 }

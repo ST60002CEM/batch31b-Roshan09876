@@ -4,15 +4,14 @@ import 'package:job_finder/core/common/Failure.dart';
 import 'package:job_finder/features/pagination/data/model/job_api_model.dart';
 import 'package:job_finder/features/pagination/domain/repository/job_repository.dart';
 
-final jobUseCaseProvider = Provider.autoDispose<JobUseCase>(
-    (ref) => JobUseCase(ref.read(jobRepositoryProvider)));
+final getAppliedJobUseCaseProvider = Provider.autoDispose<GetAppliedJobUseCase>(
+    (ref) => GetAppliedJobUseCase(ref.watch(jobRepositoryProvider)));
 
-class JobUseCase {
+class GetAppliedJobUseCase {
   final JobRepository jobRepository;
-  JobUseCase(this.jobRepository);
+  GetAppliedJobUseCase(this.jobRepository);
 
-  Future<Either<Failure, List<JobApiModel>>> getAppliedJobs(
-      {required String userId}) async {
-    return await jobRepository.getuserjobs(userId);
+    Future<Either<Failure, bool>> applyJobs(JobApiModel jobApiModel) async {
+    return await jobRepository.applyJobs(jobApiModel);
   }
 }

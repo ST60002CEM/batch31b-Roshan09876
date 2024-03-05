@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -14,15 +13,14 @@ import 'package:job_finder/features/auth/presentation/state/auth_state.dart';
 
 final authViewModelProvider = StateNotifierProvider<AuthViewModel, AuthState>(
     (ref) => AuthViewModel(ref.read(signUpUseCaseProvider),
-        ref.read(loginUseCaseProvider), ref.read(profileUseCaseProvider), ref.read(userSharedPrefsProvider)));
+        ref.read(loginUseCaseProvider), ref.read(profileUseCaseProvider)));
 
 class AuthViewModel extends StateNotifier<AuthState> {
   final SignUpUseCase signUpUseCase;
   final LoginUseCase loginUseCase;
   final ProfileUseCase profileUseCase;
-  final UserSharedPref _userSharedPref;
 
-  AuthViewModel(this.signUpUseCase, this.loginUseCase, this.profileUseCase, this._userSharedPref)
+  AuthViewModel(this.signUpUseCase, this.loginUseCase, this.profileUseCase,)
       : super(AuthState.initial());
 
   Future<void> signUpFreelancer(
@@ -81,7 +79,7 @@ class AuthViewModel extends StateNotifier<AuthState> {
 
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            backgroundColor: Colors.red, 
+            backgroundColor: Colors.blue, 
             content: Text(
               failure.error, 
               style: TextStyle(color: Colors.white), 
@@ -144,7 +142,7 @@ class AuthViewModel extends StateNotifier<AuthState> {
     showSnackBar(
         message: 'Logging out....', context: context, color: Colors.red);
 
-    await _userSharedPref.deleteUserToken();
+    await UserSharedPref().deleteUserToken();
 
     Future.delayed(const Duration(milliseconds: 2000), () {
       // state = false;

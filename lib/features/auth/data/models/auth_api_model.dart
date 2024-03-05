@@ -9,6 +9,8 @@ class AuthApiModel {
   final String? freelancerId;
   final String firstName;
   final String lastName;
+   final String location;
+  final String phoneNum;
   final String email;
   final String password;
 
@@ -16,6 +18,8 @@ class AuthApiModel {
       {required this.freelancerId,
       required this.firstName,
       required this.lastName,
+      required this.location, 
+      required this.phoneNum, 
       required this.email,
       required this.password});
 
@@ -25,6 +29,8 @@ class AuthApiModel {
         freelancerId: apiModel.freelancerId,
         firstName: apiModel.firstName,
         lastName: apiModel.lastName,
+        location: apiModel.location,
+        phoneNum: apiModel.phoneNum,
         email: apiModel.email,
         password: apiModel.password);
   }
@@ -35,6 +41,8 @@ class AuthApiModel {
         freelancerId: authEntity.freelancerId,
         firstName: authEntity.firstName,
         lastName: authEntity.lastName,
+        location: authEntity.location,
+        phoneNum: authEntity.phoneNum,
         email: authEntity.email,
         password: authEntity.password);
   }
@@ -43,6 +51,8 @@ class AuthApiModel {
       freelancerId: freelancerId,
       firstName: firstName,
       lastName: lastName,
+      location: location,
+      phoneNum: phoneNum,
       email: email,
       password: password);
 

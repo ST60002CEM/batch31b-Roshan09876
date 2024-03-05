@@ -23,6 +23,8 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
   final firstNameController = TextEditingController();
 
   final lastNameController = TextEditingController();
+  final locationController = TextEditingController();
+  final phoneNumController = TextEditingController();
 
   final emailController = TextEditingController();
 
@@ -48,7 +50,7 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                     Padding(
                       padding: EdgeInsets.all(65),
                       child: Container(
-                        height: 130,
+                        height: 70,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(200),
                             image: DecorationImage(
@@ -61,13 +63,12 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                         text: 'Hello, Welcome',
                         fontSize: 40,
                         color: Color(kDark.value)),
-                    _gap,
                     ReusableText(
                         text: 'Fill the below fields for SignUp',
                         fontSize: 25,
                         color: Color(kDark.value)),
                     SizedBox(
-                      height: 20,
+                      height: 10,
                     ),
                     TextFormField(
                       controller: firstNameController,
@@ -86,7 +87,7 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                       },
                     ),
                     SizedBox(
-                      height: 30,
+                      height: 20,
                     ),
                     TextFormField(
                       controller: lastNameController,
@@ -105,7 +106,45 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                       },
                     ),
                     SizedBox(
-                      height: 30,
+                      height: 20,
+                    ),
+                    TextFormField(
+                      controller: locationController,
+                      decoration: InputDecoration(
+                          prefixIcon: Icon(
+                            Icons.location_city,
+                            color: Color(kDark.value),
+                          ),
+                          labelText: 'location',
+                          border: OutlineInputBorder()),
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Please Enter Your Location';
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    TextFormField(
+                      controller: phoneNumController,
+                      decoration: InputDecoration(
+                          prefixIcon: Icon(
+                            Icons.phone,
+                            color: Color(kDark.value),
+                          ),
+                          labelText: 'PhoneNumber',
+                          border: OutlineInputBorder()),
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return 'Please Enter Your Phone Number';
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(
+                      height: 20,
                     ),
                     TextFormField(
                       controller: emailController,
@@ -126,7 +165,7 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                       },
                     ),
                     SizedBox(
-                      height: 30,
+                      height: 20,
                     ),
                     TextFormField(
                       controller: password,
@@ -161,7 +200,7 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                       },
                     ),
                     SizedBox(
-                      height: 40,
+                      height: 20,
                     ),
                     ElevatedButton(
                         style: ElevatedButton.styleFrom(
@@ -172,6 +211,8 @@ class _RegisterViewState extends ConsumerState<RegisterView> {
                             final userData = AuthEntity(
                                 firstName: firstNameController.text.trim(),
                                 lastName: lastNameController.text.trim(),
+                                location: locationController.text.trim(),
+                                phoneNum: phoneNumController.text.trim(),
                                 email: emailController.text.trim(),
                                 password: password.text.trim());
                             ref

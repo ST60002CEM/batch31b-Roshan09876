@@ -9,6 +9,7 @@ class HomeView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    
     final homeState = ref.watch(homeStateListViewProvider);
     return Scaffold(
       body: homeState.lstWidget[homeState.index],

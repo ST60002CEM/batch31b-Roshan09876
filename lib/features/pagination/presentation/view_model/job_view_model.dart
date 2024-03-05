@@ -1,18 +1,24 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:job_finder/features/pagination/data/model/job_api_model.dart';
+import 'package:job_finder/features/pagination/domain/usecase/get_applied_job_usecase.dart';
+import 'package:job_finder/features/pagination/domain/usecase/get_job_usecase.dart';
 import 'package:job_finder/features/pagination/domain/usecase/job_usecase.dart';
 import 'package:job_finder/features/pagination/presentation/state/job_state.dart';
 
 final jobViewModelProvider =
     StateNotifierProvider<JobViewModel, JobState>((ref) {
   final jobuseCase = ref.read(jobUseCaseProvider);
-  return JobViewModel(jobuseCase);
+  final getjobuseCase = ref.read(getJobUseCaseProvider);
+  final getapplyJobs = ref.read(getAppliedJobUseCaseProvider);
+  return JobViewModel(jobuseCase, getjobuseCase, getapplyJobs);
 });
 
 class JobViewModel extends StateNotifier<JobState> {
   // final JobRemoteDataSource jobRemoteDataSource;
+  final GetJobuseCase getJobuseCase;
   final JobUseCase jobUseCase;
-  JobViewModel(this.jobUseCase) : super(JobState.initial());
+  final GetAppliedJobUseCase getAppliedJobUseCase;
+  JobViewModel(this.jobUseCase, this.getJobuseCase, this.getAppliedJobUseCase) : super(JobState.initial());
 
   Future getJobs() async {
     state = state.copyWith(isLoading: true);
@@ -21,7 +27,7 @@ class JobViewModel extends StateNotifier<JobState> {
     final jobs = currentState.jobApiModel;
     final hasReachedmax = currentState.hasReachedmax;
     if (!hasReachedmax) {
-      final result = await jobUseCase.getJobs(page);
+      final result = await getJobuseCase.getJobs(page);
       result.fold(
           (Failure) => state =
               state.copyWith(isLoading: true, hasReachedmax: false), (data) {
@@ -40,7 +46,7 @@ class JobViewModel extends StateNotifier<JobState> {
 
   Future applyJob(JobApiModel jobApiModel) async {
     state = state.copyWith(applyLoading: true);
-    final result = await jobUseCase.applyJobs(jobApiModel);
+    final result = await getAppliedJobUseCase.applyJobs(jobApiModel);
     result.fold((Failure) => state = state.copyWith(applyLoading: false),
         (data) {
       state = state.copyWith(applyLoading: true);

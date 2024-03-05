@@ -19,6 +19,8 @@ class AuthState {
       currentUser: AuthEntity(
         firstName: "firstName", 
         lastName: "lastName", 
+        location: "location",
+        phoneNum: "phoneNum",
         email: "email",
          password: "password")
     );

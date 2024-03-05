@@ -20,6 +20,8 @@ class MainScreenView extends ConsumerStatefulWidget {
 }
 
 class _MainScreenViewState extends ConsumerState<MainScreenView> {
+late bool isDark;
+
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
