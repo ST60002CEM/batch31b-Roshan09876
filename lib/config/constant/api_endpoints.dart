@@ -7,11 +7,11 @@ class ApiEndpoints{
   static const Duration recieveTimeout = Duration(seconds: 1000);
 
   //For Windows Base URL
-  // static const String baseUrl = 'http://10.0.2.2:5500/api/';
+  static const String baseUrl = 'http://10.0.2.2:5500/api/';
   // For MAC
-  static const String baseUrl = "http://localhost:5500/api/";
+  // static const String baseUrl = "http://localhost:5500/api/";
 
-// ================================ Auth Routes ==================================
+
   static const String signUp = '/signUp';
   static const String signIn = '/signIn';
   static const String getJob = '/jobs/showallJobs';
@@ -19,5 +19,8 @@ class ApiEndpoints{
   static const String userProfile = '/profile';
   static const String applyJobs = '/user/jobHistory';
   static const String getuserjobs = '/user/jobHistory/:id';
+  static const String bookmark = '/user/bookmark/';
+  static const String bookmarkbyid = '/user/bookmark/:id';
+  static const String booked = '/user/booked/:id';
   
 }

@@ -44,11 +44,20 @@ class _JobsViewDetailState extends ConsumerState<JobsViewDetail> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ReusableText(
-                text: '${jobs.title}',
-                fontSize: 36,
-                color:
-                    Color(kDark.value)), // Increased font size and added bold
+            Container(
+              width: 500,
+              height: 100,
+              child: Card(
+                elevation: 4,
+                child: Center(
+                  child: ReusableText(
+                      text: '${jobs.title}',
+                      fontSize: 36,
+                      color:
+                          Color(kOrange.value)),
+                ),
+              ),
+            ), // Increased font size and added bold
             SizedBox(
               height: 10,
             ),
